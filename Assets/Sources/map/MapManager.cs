@@ -31,8 +31,8 @@ namespace Sources.map {
 			}
 		}
 
-		public void LaunchMan(GameObject start, ObjectOnMap end,  Resource resource) {
-			var path = FindPath(start, end.MapPoint);
+		public void LaunchMan(ObjectOnMap start, ObjectOnMap end,  Resource resource) {
+			var path = FindPath(start.MapPoint, end.MapPoint);
 
 			if (path == null) {
 				return;
@@ -53,8 +53,10 @@ namespace Sources.map {
 			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.Linear, PathMode.TopDown2D)
 				.SetEase(Ease.Linear)
 				.OnComplete(()=> {
-					end.Job(man);
-					storage.AddObject(man);
+					if (end != null) {
+						end.Job(man);
+						storage.AddObject(man);
+					}
 				});
 		}
 

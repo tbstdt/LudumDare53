@@ -17,9 +17,11 @@ namespace Sources.Editor {
 			foreach (var sound in _sounds) {
 				_soundTypes.Add(sound.Type, sound.clip);
 			}
-			
-			_music.clip = _soundTypes[SoundType.music];
-			_music.Play();
+
+			if (_soundTypes.TryGetValue(SoundType.music, out AudioClip clip)) {
+				_music.clip = clip;
+				_music.Play();
+			}
 		}
 
 		public void PlaySound(SoundType type) {
