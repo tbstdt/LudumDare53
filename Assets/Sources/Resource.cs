@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class Resource
 {
     public int Amount { get; set; }

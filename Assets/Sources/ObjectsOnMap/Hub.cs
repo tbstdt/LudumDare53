@@ -33,7 +33,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         if (m_resources[orderResource.Type] >= orderResource.Amount)
         {
             // send man
-            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, customer);
+            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, customer, null);
             m_availableMen--;
         }
     }
@@ -43,7 +43,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         if (m_availableMen > 0)
         {
             // send man
-            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, resPlace);
+            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, resPlace, null);
             m_availableMen--;
         }
     }

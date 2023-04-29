@@ -171,4 +171,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manCount: 10
-  TimeToWork: 3
+  TimeToWork: 10

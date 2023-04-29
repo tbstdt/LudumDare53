@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ResourcePlace : ObjectOnMap
 {
+    [SerializeField] private Resource _resource;
+
     public override ObjectType Type => ObjectType.Resource;
 
     protected override void OnObjectClicked()
@@ -21,6 +23,6 @@ public class ResourcePlace : ObjectOnMap
     private IEnumerator GatherResource() {
         var hub = GameCore.Instance.Get<Hub>();
         yield return new WaitForSeconds(hub.TimeToWork);
-        GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, hub);
+        GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, hub, null);
     }
 }
