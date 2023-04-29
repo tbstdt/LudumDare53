@@ -5,7 +5,6 @@ using Sources.Editor.ObjectsOnMap;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class Customer : ObjectOnMap
 {
@@ -25,7 +24,7 @@ public class Customer : ObjectOnMap
     {
         var order = GameCore.Instance.Get<OrderGenerator>().GetOrderData();
 
-        Order = new Order(new Resource(order.Type, order.Amount));
+        Order = new Order(new Resource(order.Type, order.Amount), order.Reward);
         m_text.text = order.Amount.ToString();
         m_timerInSeconds = order.TimeInSeconds;
 

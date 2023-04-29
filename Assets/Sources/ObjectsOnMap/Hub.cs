@@ -28,9 +28,13 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     public void TrySendCourier(Customer customer)
     {
-        //if (m_resources.Amount >= customer.Order.Resource.Amount)
+        var orderResource = customer.Order.Resource;
+
+        if (m_resources[orderResource.Type] >= orderResource.Amount)
         {
             // send man
+            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, customer);
+            m_availableMen--;
         }
     }
 
