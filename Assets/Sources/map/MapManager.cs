@@ -50,18 +50,8 @@ namespace Sources.map {
 				pathPositions.Add(path[index].transform.position);
 			}
 
-			
-
 			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.Linear, PathMode.TopDown2D)
 				.SetEase(Ease.Linear)
-				.OnStepComplete(() => {
-					if (end == null) {
-						end = start;
-						man.transform.DOKill();
-						pathPositions.Reverse();
-						man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.Linear, PathMode.TopDown2D);
-					}
-				})
 				.OnComplete(()=> {
 					if (end != null) {
 						end.Job(man);
