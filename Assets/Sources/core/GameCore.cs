@@ -1,3 +1,4 @@
+using Sources.Editor;
 using Sources.Editor.UI;
 using Sources.map;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Sources.core
 		[SerializeField] private ObjectsStorage _objectsStorage;
 		[SerializeField] private OrderGenerator _orderGenerator;
 		[SerializeField] private UIManager _uiManager;
+		[SerializeField] private SoundManager _soundManager;
 
 		private static CoreManagerProvider _coreManagerProvider;
 
@@ -21,6 +23,7 @@ namespace Sources.core
 				Instance.Register<ObjectsStorage>(_objectsStorage);
 				Instance.Register<OrderGenerator>(_orderGenerator);
 				Instance.Register<UIManager>(_uiManager);
+				Instance.Register<SoundManager>(_soundManager);
 
 				Instance.InitManagers();
 		}
