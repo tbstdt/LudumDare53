@@ -221,7 +221,7 @@ MonoBehaviour:
   _view: {fileID: 3294774567989725212}
   _resourceCountText: {fileID: 4274789975002933136}
   _resource:
-    Amount: 10
+    Amount: 100
     Type: 0
 --- !u!1 &7203577452728663157
 GameObject:
@@ -325,6 +325,10 @@ PrefabInstance:
     - target: {fileID: 538013224946304043, guid: 8a7358d82951042638254f0dd101ae9a, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698546092795557902, guid: 8a7358d82951042638254f0dd101ae9a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 74.77
       objectReference: {fileID: 0}
     - target: {fileID: 3754541185588224219, guid: 8a7358d82951042638254f0dd101ae9a, type: 3}
       propertyPath: m_Name

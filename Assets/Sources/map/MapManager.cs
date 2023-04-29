@@ -50,7 +50,7 @@ namespace Sources.map {
 				pathPositions.Add(path[index].transform.position);
 			}
 
-			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.Linear, PathMode.TopDown2D)
+			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.CatmullRom, PathMode.TopDown2D)
 				.SetEase(Ease.Linear)
 				.OnComplete(()=> {
 					if (end != null) {
