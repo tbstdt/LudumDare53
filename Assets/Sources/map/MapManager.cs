@@ -48,7 +48,7 @@ namespace Sources.map {
 				pathPositions.Add(path[index].transform.position);
 			}
 
-			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.Linear, PathMode.TopDown2D).SetEase(Ease.Linear).OnComplete(() => Destroy(man.gameObject));
+			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.Linear, PathMode.TopDown2D).SetEase(Ease.Linear).OnComplete(()=>storage.AddObject(man));
 		}
 
 		public List<GameObject> FindPath(GameObject start, GameObject end) {
