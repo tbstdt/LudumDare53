@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
+using Sources.map;
 
 public class Hub : ObjectOnMap, ICoreRegistrable
 {
@@ -27,8 +28,9 @@ public class Hub : ObjectOnMap, ICoreRegistrable
         }
     }
 
-    public void TrySendWorker(ResourcePlace resPlace)
-    {
+    public void TrySendWorker(ResourcePlace resPlace) {
+        GameCore.Instance.Get<MapManager>().LaunchMan(gameObject, resPlace.gameObject);
+        
         if (m_availableMen.Count > 0)
         {
             // send man
