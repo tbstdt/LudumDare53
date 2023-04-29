@@ -1,14 +1,23 @@
+using System;
 using System.Collections;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
 using Sources.map;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourcePlace : ObjectOnMap
 {
+    [SerializeField] private Text _resourceCountText;
     [SerializeField] private Resource _resource;
 
+    private int _menInside = 0;
+
     public override ObjectType Type => ObjectType.Resource;
+
+    private void Start() {
+        _resourceCountText.text = _resource.Amount.ToString();
+    }
 
     protected override void OnObjectClicked()
     {
@@ -17,6 +26,7 @@ public class ResourcePlace : ObjectOnMap
     }
     
     public override void Job(Man man) {
+        _menInside++;
         StartCoroutine(GatherResource());
     }
 
@@ -39,10 +49,16 @@ public class ResourcePlace : ObjectOnMap
                 takenResource.Amount += _resource.Amount;
                 _resource.Amount = 0;
             }
-            
+
+            _resourceCountText.text = _resource.Amount.ToString();
         }
         
         
         GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, hub, takenResource);
+        _menInside--;
+
+        if (_menInside == 0 && _resource.Amount == 0) {
+            Destroy(gameObject);
+        }
     }
 }

@@ -147,6 +147,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3cc139cf4d4ff38d0f151a8b4403bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3971943110173452687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6753988409409287996}
+  - component: {fileID: 6434181968749324894}
+  m_Layer: 0
+  m_Name: point 0 (71)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6753988409409287996
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3971943110173452687}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4721300289681063069}
+  m_RootOrder: 71
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -70, y: 192}
+  m_SizeDelta: {x: 10, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6434181968749324894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3971943110173452687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3cc139cf4d4ff38d0f151a8b4403bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4721300288295597013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2258,7 @@ RectTransform:
   - {fileID: 8145629548262862016}
   - {fileID: 3167173066479084769}
   - {fileID: 2264986828293929175}
+  - {fileID: 6753988409409287996}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2295,6 +2345,13 @@ MonoBehaviour:
   - {fileID: 4721300289620799878}
   - {fileID: 4721300289465557506}
   - {fileID: 4721300289819872771}
+  - {fileID: 5824487438734929911}
+  - {fileID: 194656509068912002}
+  - {fileID: 2090665200271662071}
+  - {fileID: 6718005601004793394}
+  - {fileID: 8529609535826572425}
+  - {fileID: 2338143939372185029}
+  - {fileID: 3971943110173452687}
   _manContainer: {fileID: 0}
   _manSpeed: 3
   _minPointDistance: 0.5
