@@ -7,4 +7,6 @@ public class OrderSO : ScriptableObject
     public int Amount;
     public int TimeInSeconds;
     public int Reward;
+    public int ReputationReward;
+    public int ReputationPenalty;
 }

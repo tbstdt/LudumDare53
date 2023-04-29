@@ -40,23 +40,25 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     }
 
-    public void TrySendCourier(Customer customer)
+    public bool TrySendCourier(Customer customer)
     {
         var orderResource = customer.Order.Resource;
 
         if (m_resources[orderResource.Type] >= orderResource.Amount)
         {
-            // send man
-            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, customer, null);
+            m_resources[orderResource.Type] -= orderResource.Amount;
+            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, customer, customer.Order.Resource);
             m_availableMen--;
+            return true;
         }
+
+        return false;
     }
 
     public void TrySendWorker(ResourcePlace resPlace) {
 
         if (m_availableMen > 0)
         {
-            // send man
             GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, resPlace, null);
             m_availableMen--;
         }
