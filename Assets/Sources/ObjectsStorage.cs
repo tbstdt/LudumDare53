@@ -24,7 +24,7 @@ public class ObjectsStorage : MonoBehaviour, ICoreRegistrable
             }
         }
 
-        return Instantiate(m_prefabs.First(o => o.ObjectType == type).ObjectPrefab);
+        return Instantiate(m_prefabs.First(o => o.ObjectType == type).ObjectPrefab, _poolContainer);
     }
 
     public void AddObject(ObjectOnMap mapObject) {

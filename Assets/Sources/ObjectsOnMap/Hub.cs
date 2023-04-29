@@ -1,17 +1,30 @@
 using System.Collections.Generic;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
+using Sources.Editor.UI;
 using Sources.map;
 using UnityEngine;
 
 public class Hub : ObjectOnMap, ICoreRegistrable {
     [SerializeField] private int _manCount = 3;
 
-    private Dictionary<ResourceType, int> m_resources;
+    private Dictionary<ResourceType, int> m_resources = new () {
+        {ResourceType.One, 0},
+        {ResourceType.Two, 0},
+        {ResourceType.Three, 0},
+        {ResourceType.Money, 0},
+    };
 
     private int m_availableMen;
 
     public int TimeToWork = 10;
+    public Dictionary<ResourceType, int> ResourcePerSecond = new () {
+        {ResourceType.One, 1},
+        {ResourceType.Two, 2},
+        {ResourceType.Three, 3},
+    };
+
+    public Dictionary<ResourceType, int> Resources => m_resources;
 
     public override ObjectType Type => ObjectType.Hub;
 
@@ -19,6 +32,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     {
         GameCore.Instance.Register<Hub>(this);
         m_availableMen = _manCount;
+        GameCore.Instance.Get<UIManager>().UpdateResource(m_resources);
     }
 
     protected override void OnObjectClicked()
@@ -50,5 +64,9 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     public override void Job(Man man) {
         m_availableMen++;
+        if (man.Resource != null) {
+            m_resources[man.Resource.Type] += man.Resource.Amount;
+        }
+        GameCore.Instance.Get<UIManager>().UpdateResource(m_resources);
     }
 }
