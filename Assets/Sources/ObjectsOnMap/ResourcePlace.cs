@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Sources.core;
 
 public class ResourcePlace : ObjectOnMap
 {
@@ -10,6 +8,7 @@ public class ResourcePlace : ObjectOnMap
 
     protected override void OnObjectClicked()
     {
-
+        var hub = GameCore.Instance.Get<Hub>();
+        hub.TrySendWorker(this);
     }
 }
