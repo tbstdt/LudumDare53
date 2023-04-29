@@ -109,10 +109,15 @@ public class Customer : ObjectOnMap
         }
 
         m_manOnRoad = false;
+        var mapManager = GameCore.Instance.Get<MapManager>();
 
         var hub = GameCore.Instance.Get<Hub>();
-        Resource resource = Order.Reward;
-        GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, hub, resource);
+        if (Order == null)
+        {
+            mapManager.LaunchMan(MapPoint, hub, null);
+        }
+
+        mapManager.LaunchMan(MapPoint, hub, Order.Reward);
         Order = null;
         StartCoroutine(ReorderTimer());
     }

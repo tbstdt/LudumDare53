@@ -40,7 +40,7 @@ namespace Sources.map {
 			var storage = GameCore.Instance.Get<ObjectsStorage>();
 
 			var man = (Man)storage.GetObjectByType(ObjectType.Man);
-			man.Resource = resource;
+			man.Resource = resource ?? man.Resource;
 
 			man.transform.SetParent(_manContainer);
 			man.transform.position = start.transform.position;
@@ -64,7 +64,7 @@ namespace Sources.map {
 			foreach (var node in _graphNodes) {
 				node.previous = null;
 			}
-			
+
 			GraphNode startNode = _graphNodes.Find(n => n.point == start);
 			GraphNode endNode = _graphNodes.Find(n => n.point == end);
 			startNode.distanceToStart = 0;
