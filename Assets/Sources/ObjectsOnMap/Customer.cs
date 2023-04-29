@@ -9,7 +9,8 @@ using UnityEngine.UI;
 
 public class Customer : ObjectOnMap
 {
-    [SerializeField] private TextMeshProUGUI m_text;
+    [SerializeField] private TextMeshProUGUI m_resourceAmountText;
+    [SerializeField] private TextMeshProUGUI m_reputationText;
     [Space]
     [SerializeField] private TextMeshProUGUI m_timerTime;
     [SerializeField] private Image m_timerView;
@@ -21,7 +22,7 @@ public class Customer : ObjectOnMap
     private bool m_timeout;
     private bool m_manOnRoad;
 
-    private int m_reputation;
+    private int m_reputation = 0;
 
     public Order Order { get; private set; }
 
@@ -30,6 +31,7 @@ public class Customer : ObjectOnMap
     private void Start()
     {
         m_orderGenerator = GameCore.Instance.Get<OrderGenerator>();
+        m_reputationText.text = m_reputation.ToString();
 
         StartOrder();
     }
@@ -60,6 +62,7 @@ public class Customer : ObjectOnMap
         if (!m_manOnRoad)
         {
             m_reputation -= Order.ReputationPenalty;
+            m_reputationText.text = m_reputation.ToString();
             Order = null;
         }
     }
@@ -79,6 +82,9 @@ public class Customer : ObjectOnMap
             StopCoroutine(StartTimer());
             m_timeout = true;
             m_timerGO.SetActive(false);
+
+            m_reputation = Order.ReputationReward;
+            m_reputationText.text = m_reputation.ToString();
         }
 
         m_manOnRoad = false;
@@ -86,14 +92,15 @@ public class Customer : ObjectOnMap
         var hub = GameCore.Instance.Get<Hub>();
         Resource resource = Order.Reward;
         GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, hub, resource);
+        Order = null;
     }
 
     public void StartOrder()
     {
         var order = m_orderGenerator.GetOrderData();
 
-        Order = new Order(new Resource(order.Type, order.Amount), order.Reward, order.ReputationReward, order.ReputationPenalty);
-        m_text.text = order.Amount.ToString();
+        Order = new Order(new Resource(order.Type, order.Amount), order.MoneyReward, order.ReputationReward, order.ReputationPenalty);
+        m_resourceAmountText.text = order.Amount.ToString();
         m_timerInSeconds = order.TimeInSeconds;
 
         if (m_timerInSeconds <= 0)
