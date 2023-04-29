@@ -15,6 +15,10 @@ namespace Sources.map {
 				objectOnMap.transform.SetParent(_container);
 				objectOnMap.transform.position = mapPoint.Point.transform.position;
 			}
+			
+			
+			
+			GameCore.Instance.Get<MapManager>().LaunchMan(_points[0].Point, _points[1].Point);
 		}
 	}
 

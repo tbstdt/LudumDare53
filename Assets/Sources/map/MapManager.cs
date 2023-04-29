@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Sources.core;
 using UnityEngine;
 
 namespace Sources.map {
 	public class MapManager : MonoBehaviour, ICoreRegistrable {
 		[SerializeField] private List<GameObject> _mapPoints;
+		[SerializeField] private Transform _manContainer;
 
 		private List<GraphNode> _graphNodes = new();
 		
@@ -27,6 +29,21 @@ namespace Sources.map {
 						node.neighbors.Add(neighborNode);
 					}
 				}
+			}
+		}
+
+		public void LaunchMan(GameObject start, GameObject end) {
+			var path = FindPath(start, end);
+			var storage = GameCore.Instance.Get<ObjectsStorage>();
+
+			var man = storage.GetObjectByType(ObjectType.Man);
+
+			man.transform.SetParent(_manContainer);
+			man.transform.position = start.transform.position;
+
+			for (int index = 1; index < path.Count; index++) {
+				var point = path[index].transform.position;
+				man.transform.DOMove(point, 5f).SetEase(Ease.Linear).OnComplete(() => Destroy(man.gameObject));
 			}
 		}
 

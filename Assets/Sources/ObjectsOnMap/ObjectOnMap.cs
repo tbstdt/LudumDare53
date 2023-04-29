@@ -6,7 +6,8 @@ public enum ObjectType
 {
     Resource,
     Customer,
-    Hub
+    Hub,
+    Man
 }
 
 public abstract class ObjectOnMap : MonoBehaviour
