@@ -1,9 +1,10 @@
+using Sources.core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 
-public class OrderUIPanel : MonoBehaviour
+public class OrderUIPanel : MonoBehaviour, ICoreRegistrable
 {
     [SerializeField] private SpriteAtlas m_resourceIcons;
     [Space]
@@ -11,7 +12,12 @@ public class OrderUIPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_resourceAmountText;
     [SerializeField] private Image m_resourceImage;
     [SerializeField] private TextMeshProUGUI m_rewardAmountText;
+    [SerializeField] private Image m_rewardImage;
     [SerializeField] private TextMeshProUGUI m_timerText;
+    [SerializeField] private Button m_btn;
 
-
+    public void SetView(Order order)
+    {
+        
+    }
 }

@@ -9,9 +9,6 @@ using UnityEngine.UI;
 
 public class Customer : ObjectOnMap
 {
-    [SerializeField] private TextMeshProUGUI m_resourceAmountText;
-    [SerializeField] private TextMeshProUGUI m_reputationText;
-    [Space]
     [SerializeField] private TextMeshProUGUI m_timerTime;
     [SerializeField] private Image m_timerView;
     [SerializeField] private GameObject m_timerGO;
@@ -31,7 +28,6 @@ public class Customer : ObjectOnMap
     private void Start()
     {
         m_orderGenerator = GameCore.Instance.Get<OrderGenerator>();
-        m_reputationText.text = m_reputation.ToString();
 
         StartOrder();
     }
@@ -62,7 +58,6 @@ public class Customer : ObjectOnMap
         if (!m_manOnRoad)
         {
             m_reputation -= Order.ReputationPenalty;
-            m_reputationText.text = m_reputation.ToString();
             Order = null;
         }
     }
@@ -84,7 +79,6 @@ public class Customer : ObjectOnMap
             m_timerGO.SetActive(false);
 
             m_reputation = Order.ReputationReward;
-            m_reputationText.text = m_reputation.ToString();
         }
 
         m_manOnRoad = false;
@@ -100,7 +94,6 @@ public class Customer : ObjectOnMap
         var order = m_orderGenerator.GetOrderData();
 
         Order = new Order(new Resource(order.Type, order.Amount), order.MoneyReward, order.ReputationReward, order.ReputationPenalty);
-        m_resourceAmountText.text = order.Amount.ToString();
         m_timerInSeconds = order.TimeInSeconds;
 
         if (m_timerInSeconds <= 0)
