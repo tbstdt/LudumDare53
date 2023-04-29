@@ -49,7 +49,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         if (m_resources[orderResource.Type] >= orderResource.Amount)
         {
             m_resources[orderResource.Type] -= orderResource.Amount;
-            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, customer, customer.Order.Resource);
+            GameCore.Instance.Get<MapManager>().LaunchMan(this, customer, customer.Order.Resource);
             m_availableMen--;
             updateResource();
             return true;
@@ -59,10 +59,9 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     }
 
     public void TrySendWorker(ResourcePlace resPlace) {
-
         if (m_availableMen > 0)
         {
-            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, resPlace, null);
+            GameCore.Instance.Get<MapManager>().LaunchMan(this, resPlace, null);
             m_availableMen--;
             updateResource();
         }

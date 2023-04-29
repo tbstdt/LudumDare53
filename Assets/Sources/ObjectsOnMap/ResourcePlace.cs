@@ -21,6 +21,10 @@ public class ResourcePlace : ObjectOnMap
 
     protected override void OnObjectClicked()
     {
+        if (_resource.Amount <= 0) {
+            return;
+        }
+        
         var hub = GameCore.Instance.Get<Hub>();
         hub.TrySendWorker(this);
     }
@@ -54,7 +58,7 @@ public class ResourcePlace : ObjectOnMap
         }
         
         
-        GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, hub, takenResource);
+        GameCore.Instance.Get<MapManager>().LaunchMan(this, hub, takenResource);
         _menInside--;
 
         if (_menInside == 0 && _resource.Amount == 0) {

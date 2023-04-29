@@ -114,10 +114,10 @@ public class Customer : ObjectOnMap
         var hub = GameCore.Instance.Get<Hub>();
         if (Order == null)
         {
-            mapManager.LaunchMan(MapPoint, hub, null);
+            mapManager.LaunchMan(this, hub, null);
         }
 
-        mapManager.LaunchMan(MapPoint, hub, Order.Reward);
+        mapManager.LaunchMan(this, hub, Order.Reward);
         Order = null;
         StartCoroutine(ReorderTimer());
     }
