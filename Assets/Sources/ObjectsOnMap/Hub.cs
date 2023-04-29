@@ -2,17 +2,22 @@ using System.Collections.Generic;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
 using Sources.map;
+using UnityEngine;
 
-public class Hub : ObjectOnMap, ICoreRegistrable
-{
+public class Hub : ObjectOnMap, ICoreRegistrable {
+    [SerializeField] private int _manCount = 3;
+   
     private Resource m_resources = new Resource();
-    private List<Man> m_availableMen = new();
+    private int m_availableMen;
+
+    public int TimeToWork = 10;
 
     public override ObjectType Type => ObjectType.Hub;
 
     private void Start()
     {
         GameCore.Instance.Register<Hub>(this);
+        m_availableMen = _manCount;
     }
 
     protected override void OnObjectClicked()
@@ -29,11 +34,16 @@ public class Hub : ObjectOnMap, ICoreRegistrable
     }
 
     public void TrySendWorker(ResourcePlace resPlace) {
-        GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, resPlace.MapPoint);
         
-        if (m_availableMen.Count > 0)
+        if (m_availableMen > 0)
         {
             // send man
+            GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, resPlace);
+            m_availableMen--;
         }
+    }
+
+    public override void Job(Man man) {
+        m_availableMen++;
     }
 }

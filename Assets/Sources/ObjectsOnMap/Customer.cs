@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using Sources.core;
+using Sources.Editor.ObjectsOnMap;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,5 +61,9 @@ public class Customer : ObjectOnMap
     {
         var hub = GameCore.Instance.Get<Hub>();
         hub.TrySendCourier(this);
+    }
+
+    public override void Job(Man man) {
+       
     }
 }

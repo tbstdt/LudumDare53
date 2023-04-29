@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Sources.core;
+using Sources.Editor.ObjectsOnMap;
 using UnityEngine;
 
 namespace Sources.map {
@@ -30,15 +31,15 @@ namespace Sources.map {
 			}
 		}
 
-		public void LaunchMan(GameObject start, GameObject end) {
-			var path = FindPath(start, end);
+		public void LaunchMan(GameObject start, ObjectOnMap end) {
+			var path = FindPath(start, end.MapPoint);
 
 			if (path == null) {
 				return;
 			}
 			var storage = GameCore.Instance.Get<ObjectsStorage>();
 
-			var man = storage.GetObjectByType(ObjectType.Man);
+			var man = (Man)storage.GetObjectByType(ObjectType.Man);
 
 			man.transform.SetParent(_manContainer);
 			man.transform.position = start.transform.position;
@@ -48,11 +49,21 @@ namespace Sources.map {
 				pathPositions.Add(path[index].transform.position);
 			}
 
-			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.Linear, PathMode.TopDown2D).SetEase(Ease.Linear).OnComplete(()=>storage.AddObject(man));
+			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.Linear, PathMode.TopDown2D)
+				.SetEase(Ease.Linear)
+				.OnComplete(()=> {
+					end.Job(man);
+					storage.AddObject(man);
+				});
 		}
 
 		public List<GameObject> FindPath(GameObject start, GameObject end) {
 			// инициализируем начальную и конечную вершины
+
+			foreach (var node in _graphNodes) {
+				node.previous = null;
+			}
+			
 			GraphNode startNode = _graphNodes.Find(n => n.point == start);
 			GraphNode endNode = _graphNodes.Find(n => n.point == end);
 			startNode.distanceToStart = 0;

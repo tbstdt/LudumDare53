@@ -1,3 +1,4 @@
+using Sources.Editor.ObjectsOnMap;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,4 +14,6 @@ public abstract class ObjectOnMap : MonoBehaviour, IPointerClickHandler
     public void AddMapPoint(GameObject point) {
         MapPoint = point;
     }
+
+    public virtual void Job(Man man) { }
 }
