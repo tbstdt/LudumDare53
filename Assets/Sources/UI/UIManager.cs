@@ -13,7 +13,7 @@ namespace Sources.Editor.UI {
 		[SerializeField] private Text _mans;
 
 
-		public void UpdateResource(Dictionary<ResourceType, int> resources) {
+		public void UpdateResource(Dictionary<ResourceType, int> resources, int workersCount, int workersMax) {
 			foreach (var resource in resources) {
 				switch (resource.Key) {
 					case ResourceType.One:
@@ -28,8 +28,9 @@ namespace Sources.Editor.UI {
 					case ResourceType.Money:
 						_resourceMoney.text = resource.Value.ToString();
 						break;
-					
 				}
+
+				_mans.text = $"{workersCount}/{workersMax}";
 			}
 		}
 	}

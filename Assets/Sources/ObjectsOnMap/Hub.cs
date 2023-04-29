@@ -16,8 +16,9 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     };
 
     private int m_availableMen;
-
+    private int _maxMenCount;
     public int TimeToWork = 10;
+    
     public Dictionary<ResourceType, int> ResourcePerSecond = new () {
         {ResourceType.One, 1},
         {ResourceType.Two, 2},
@@ -32,7 +33,8 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     {
         GameCore.Instance.Register<Hub>(this);
         m_availableMen = _manCount;
-        GameCore.Instance.Get<UIManager>().UpdateResource(m_resources);
+        _maxMenCount = _manCount;
+        updateResource();
     }
 
     protected override void OnObjectClicked()
@@ -49,6 +51,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             m_resources[orderResource.Type] -= orderResource.Amount;
             GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, customer, customer.Order.Resource);
             m_availableMen--;
+            updateResource();
             return true;
         }
 
@@ -61,6 +64,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         {
             GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, resPlace, null);
             m_availableMen--;
+            updateResource();
         }
     }
 
@@ -69,6 +73,10 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         if (man.Resource != null) {
             m_resources[man.Resource.Type] += man.Resource.Amount;
         }
-        GameCore.Instance.Get<UIManager>().UpdateResource(m_resources);
+        updateResource();
+    }
+
+    private void updateResource() {
+        GameCore.Instance.Get<UIManager>().UpdateResource(m_resources, m_availableMen, _maxMenCount);
     }
 }
