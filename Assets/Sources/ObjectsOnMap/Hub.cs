@@ -29,7 +29,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable
     }
 
     public void TrySendWorker(ResourcePlace resPlace) {
-        GameCore.Instance.Get<MapManager>().LaunchMan(gameObject, resPlace.gameObject);
+        GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, resPlace.MapPoint);
         
         if (m_availableMen.Count > 0)
         {

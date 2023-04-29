@@ -1969,7 +1969,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4721300289681063069}
-  - component: {fileID: 4721300289681063057}
   - component: {fileID: 4721300289681063070}
   - component: {fileID: 4721300289681063071}
   - component: {fileID: 4721300289681063068}
@@ -2065,24 +2064,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4721300289681063057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4721300289681063066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 381d960c246240f68cf225c5a16c0310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _points:
-  - Type: 2
-    Point: {fileID: 4721300290094190574}
-  - Type: 0
-    Point: {fileID: 4721300289457943903}
-  _container: {fileID: 0}
 --- !u!114 &4721300289681063070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2162,6 +2143,8 @@ MonoBehaviour:
   - {fileID: 4721300289465557506}
   - {fileID: 4721300289819872771}
   _manContainer: {fileID: 0}
+  _manSpeed: 3
+  _minPointDistance: 70
 --- !u!222 &4721300289681063071
 CanvasRenderer:
   m_ObjectHideFlags: 0

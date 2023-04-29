@@ -14,11 +14,8 @@ namespace Sources.map {
 				var objectOnMap = objectStorage.GetObjectByType(mapPoint.Type);
 				objectOnMap.transform.SetParent(_container);
 				objectOnMap.transform.position = mapPoint.Point.transform.position;
+				objectOnMap.AddMapPoint(mapPoint.Point);
 			}
-			
-			
-			
-			GameCore.Instance.Get<MapManager>().LaunchMan(_points[0].Point, _points[1].Point);
 		}
 	}
 
