@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public enum ObjectType
-{
-    Resource,
-    Customer,
-    Hub,
-    Man
-}
-
-public abstract class ObjectOnMap : MonoBehaviour
+public abstract class ObjectOnMap : MonoBehaviour, IPointerClickHandler
 {
     public abstract ObjectType Type { get; }
 
     public virtual int TimerInSeconds { get; } = -1;
+
+    protected abstract void OnObjectClicked();
+
+    public void OnPointerClick(PointerEventData eventData) => OnObjectClicked();
 }

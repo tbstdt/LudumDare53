@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Sources.core;
 using TMPro;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public class Customer : ObjectOnMap
 {
     [SerializeField] private TextMeshProUGUI m_text;
 
-    private Order m_order;
+    public Order Order { get; private set; }
 
     public override ObjectType Type => ObjectType.Customer;
 
@@ -16,7 +15,13 @@ public class Customer : ObjectOnMap
     private void Start()
     {
         var amount = Random.Range(0, 10);
-        m_order = new Order(amount);
+        Order = new Order(amount);
         m_text.text = amount.ToString();
+    }
+
+    protected override void OnObjectClicked()
+    {
+        var hub = GameCore.Instance.Get<Hub>();
+        hub.TrySendCourier(this);
     }
 }
