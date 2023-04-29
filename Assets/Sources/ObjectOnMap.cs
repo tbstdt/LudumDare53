@@ -12,4 +12,6 @@ public enum ObjectType
 public abstract class ObjectOnMap : MonoBehaviour
 {
     public abstract ObjectType Type { get; }
+
+    public virtual int TimerInSeconds { get; } = -1;
 }
