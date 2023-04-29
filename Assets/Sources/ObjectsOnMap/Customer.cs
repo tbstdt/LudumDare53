@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Collections;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
@@ -12,9 +11,11 @@ public class Customer : ObjectOnMap
 {
     [SerializeField] private TextMeshProUGUI m_text;
     [Space]
-    [SerializeField] private int m_timerInSeconds = 30;
     [SerializeField] private TextMeshProUGUI m_timerTime;
     [SerializeField] private Image m_timerView;
+    [SerializeField] private GameObject m_timerGO;
+
+    private int m_timerInSeconds;
 
     public Order Order { get; private set; }
 
@@ -22,21 +23,24 @@ public class Customer : ObjectOnMap
 
     private void Start()
     {
-        var amount = Random.Range(0, 10);
-        Order = new Order(amount);
-        m_text.text = amount.ToString();
+        var order = GameCore.Instance.Get<OrderGenerator>().GetOrderData();
+
+        Order = new Order(new Resource(order.Type, order.Amount));
+        m_text.text = order.Amount.ToString();
+        m_timerInSeconds = order.TimeInSeconds;
 
         if (m_timerInSeconds <= 0)
+        {
+            m_timerGO.SetActive(false);
             return;
-
-        if (m_timerTime == null || m_timerView == null)
-            return;
+        }
 
         StartCoroutine(StartTimer());
     }
 
     private IEnumerator StartTimer()
     {
+        m_timerGO.SetActive(true);
         float time = m_timerInSeconds;
 
         while (time > 0)
@@ -49,12 +53,7 @@ public class Customer : ObjectOnMap
             yield return null;
         }
 
-        OnTimerEnd();
-    }
-
-    private void OnTimerEnd()
-    {
-        Destroy(gameObject);
+        m_timerGO.SetActive(false);
     }
 
     protected override void OnObjectClicked()
@@ -64,6 +63,6 @@ public class Customer : ObjectOnMap
     }
 
     public override void Job(Man man) {
-       
+
     }
 }

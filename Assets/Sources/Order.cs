@@ -2,8 +2,8 @@ public class Order
 {
     public Resource Resource { get; private set; }
 
-    public Order(int resoureAmount)
+    public Order(Resource resource)
     {
-        Resource = new Resource(resoureAmount);
+        Resource = resource;
     }
 }

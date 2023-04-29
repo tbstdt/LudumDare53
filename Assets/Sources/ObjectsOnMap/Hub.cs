@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class Hub : ObjectOnMap, ICoreRegistrable {
     [SerializeField] private int _manCount = 3;
-   
-    private Resource m_resources = new Resource();
+
+    private Dictionary<ResourceType, int> m_resources;
+
     private int m_availableMen;
 
     public int TimeToWork = 10;
@@ -27,14 +28,14 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     public void TrySendCourier(Customer customer)
     {
-        if (m_resources.Amount >= customer.Order.Resource.Amount)
+        //if (m_resources.Amount >= customer.Order.Resource.Amount)
         {
             // send man
         }
     }
 
     public void TrySendWorker(ResourcePlace resPlace) {
-        
+
         if (m_availableMen > 0)
         {
             // send man

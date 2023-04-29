@@ -1,9 +1,11 @@
 public class Resource
 {
     public int Amount { get; set; }
+    public ResourceType Type { get; private set; }
 
-    public Resource(int resoureAmount = 0)
+    public Resource(ResourceType type, int resoureAmount = 0)
     {
         Amount = resoureAmount;
+        Type = type;
     }
 }

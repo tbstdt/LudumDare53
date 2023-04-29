@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 1.2000237, y: 75.600006}
-  m_SizeDelta: {x: -50, y: -50}
+  m_SizeDelta: {x: -65.1887, y: -63.1636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &717980765103653023
 CanvasRenderer:
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.1
+  m_fontSize: 29.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -423,9 +423,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_text: {fileID: 9170319486643198022}
-  m_timerInSeconds: 30
   m_timerTime: {fileID: 3871486898105451959}
   m_timerView: {fileID: 5383083599044596107}
+  m_timerGO: {fileID: 421744212245784404}
 --- !u!1 &8101649932546741507
 GameObject:
   m_ObjectHideFlags: 0
