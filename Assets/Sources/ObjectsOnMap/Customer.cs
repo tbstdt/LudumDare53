@@ -91,7 +91,7 @@ public class Customer : ObjectOnMap
 
     protected override void OnObjectClicked()
     {
-        if (m_timeout)
+        if (m_timeout || m_manOnRoad)
             return;
 
         var hub = GameCore.Instance.Get<Hub>();
