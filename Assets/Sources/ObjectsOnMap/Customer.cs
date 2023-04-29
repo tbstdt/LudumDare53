@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class Customer : ObjectOnMap
 {
+    [SerializeField] private TextMeshProUGUI m_resourceAmountText;
+    [Space]
     [SerializeField] private TextMeshProUGUI m_timerTime;
     [SerializeField] private Image m_timerView;
     [SerializeField] private GameObject m_timerGO;
@@ -29,6 +31,29 @@ public class Customer : ObjectOnMap
     {
         m_orderGenerator = GameCore.Instance.Get<OrderGenerator>();
 
+        StartOrder();
+    }
+
+    private void StartOrder()
+    {
+        var order = m_orderGenerator.GetOrderData();
+
+        Order = new Order(order);
+        m_resourceAmountText.text = order.Amount.ToString();
+        m_timerInSeconds = order.TimeInSeconds;
+
+        if (m_timerInSeconds <= 0)
+        {
+            m_timerGO.SetActive(false);
+            return;
+        }
+
+        StartCoroutine(StartTimer());
+    }
+
+    private IEnumerator ReorderTimer()
+    {
+        yield return new WaitForSeconds(OrderGenerator.REORDER_TIME_SECONDS);
         StartOrder();
     }
 
@@ -60,6 +85,8 @@ public class Customer : ObjectOnMap
             m_reputation -= Order.ReputationPenalty;
             Order = null;
         }
+
+        StartCoroutine(ReorderTimer());
     }
 
     protected override void OnObjectClicked()
@@ -87,21 +114,6 @@ public class Customer : ObjectOnMap
         Resource resource = Order.Reward;
         GameCore.Instance.Get<MapManager>().LaunchMan(MapPoint, hub, resource);
         Order = null;
-    }
-
-    public void StartOrder()
-    {
-        var order = m_orderGenerator.GetOrderData();
-
-        Order = new Order(new Resource(order.Type, order.Amount), order.MoneyReward, order.ReputationReward, order.ReputationPenalty);
-        m_timerInSeconds = order.TimeInSeconds;
-
-        if (m_timerInSeconds <= 0)
-        {
-            m_timerGO.SetActive(false);
-            return;
-        }
-
-        StartCoroutine(StartTimer());
+        StartCoroutine(ReorderTimer());
     }
 }

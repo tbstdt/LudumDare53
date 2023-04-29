@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OrderGenerator : MonoBehaviour, ICoreRegistrable
 {
+   public const int REORDER_TIME_SECONDS = 15;
+
    [SerializeField] private List<OrderSO> m_orders;
 
    public OrderSO GetOrderData()

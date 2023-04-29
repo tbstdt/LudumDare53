@@ -16,8 +16,13 @@ public class OrderUIPanel : MonoBehaviour, ICoreRegistrable
     [SerializeField] private TextMeshProUGUI m_timerText;
     [SerializeField] private Button m_btn;
 
-    public void SetView(Order order)
+    public void SetView(Order order, int time)
     {
-        
+        m_orderNameText.text = order.OrderName;
+        m_resourceAmountText.text = order.Resource.Amount.ToString();
+        m_resourceImage.sprite = m_resourceIcons.GetSprite(nameof(order.Resource.Type));
+        m_rewardAmountText.text = order.Reward.Amount.ToString();
+        m_rewardImage.sprite = m_resourceIcons.GetSprite(nameof(ResourceType.Money));
+        m_timerText.text = time.ToString();
     }
 }
