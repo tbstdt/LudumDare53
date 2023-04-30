@@ -3,13 +3,13 @@ using System.Collections;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
 using Sources.map;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ResourcePlace : ObjectOnMap
 {
     [SerializeField] private GameObject _view;
-    [SerializeField] private Text _resourceCountText;
+    [SerializeField] private TextMeshProUGUI _resourceCountText;
     [SerializeField] private Resource _resource;
 
     private int _menInside = 0;
