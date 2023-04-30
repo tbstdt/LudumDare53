@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 526229767039963055}
+  - component: {fileID: 778357436128905518}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -39,6 +40,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &778357436128905518
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961462694228340060}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ca82b9b5f5bb704691330763d9ab80e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2931234026713732766
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -519562961, guid: 3269a8a0b5a5a4141b6b39e63619f69d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cd4476aa1b02614e80e0f146d4c4f03, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -655,15 +677,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7181844978932859302, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7181844978932859302, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7181844978932859302, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 153
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7181844978932859302, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -671,7 +693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7181844978932859302, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -83.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7329671917457261806, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
       propertyPath: m_Pivot.x

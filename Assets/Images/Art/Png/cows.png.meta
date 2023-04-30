@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df4907be809ea9e40b72cec20be29719
+guid: ac91fc12f9365204695f6b603cba5f99
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,43 +105,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: supermutant_0
+      name: cows_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
-        width: 72
-        height: 162
+        y: 244
+        width: 126
+        height: 66
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28f641ef767d8c443aa077cfa0812ac6
-      internalID: -1366444872
+      spriteID: a5eecf46af6f1fa4188fd3e648756e92
+      internalID: 354241585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: supermutant_1
+      name: cows_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 4
-        width: 72
-        height: 162
+        x: 176
+        y: 244
+        width: 126
+        height: 66
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3afda83e9d574b64aa5490f7723d92ed
-      internalID: 1870247451
+      spriteID: 0559cba4a10024a4693ea7859bee030b
+      internalID: -1394159427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 122
+        width: 102
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a87ae0d1c38096346bf35f87fa26230d
+      internalID: 215061503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_3
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 128
+        width: 102
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69cf3fd39ea6a6d49b1dffc4cc4b892c
+      internalID: -513244090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 102
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb6e89c44e6b2f4fb1fdefbade41b44
+      internalID: -1508095374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 6
+        width: 102
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987723d9c9f00254d823d7c2975e00ca
+      internalID: 1478129793
       vertices: []
       indices: 
       edges: []
@@ -157,8 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      supermutant_0: -1366444872
-      supermutant_1: 1870247451
+      cows_0: 354241585
+      cows_1: -1394159427
+      cows_2: 215061503
+      cows_3: -513244090
+      cows_4: -1508095374
+      cows_5: 1478129793
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
