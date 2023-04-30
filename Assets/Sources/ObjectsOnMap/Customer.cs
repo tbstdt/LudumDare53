@@ -7,6 +7,7 @@ using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
 using Sources.map;
 using TMPro;
+using UnityEditor.TextCore.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ public class Customer : ObjectOnMap
     [SerializeField] private TextMeshProUGUI m_timerTime;
     [SerializeField] private Image m_timerView;
     [SerializeField] private GameObject m_timerGO;
+    [SerializeField] private TextMeshProUGUI m_costAmountText;
     [Space]
     [SerializeField] private int m_StartFirstQuest = 10;
     [SerializeField] private int m_reputation = 3;
@@ -51,6 +53,7 @@ public class Customer : ObjectOnMap
         var order = m_orderGenerator.GetOrderData();
 
         Order = new Order(order);
+        m_costAmountText.text = order.MoneyReward.ToString();
 
         _resourceOne.SetActive(false);
         _resourceTwo.SetActive(false);
@@ -143,7 +146,7 @@ public class Customer : ObjectOnMap
             UpdateOrders();
 
         var reward = Order != null ? new List<Resource> { Order.Reward } : null;
-        
+
         mapManager.LaunchMan(this, hub, reward);
 
         if (!m_timeout)
