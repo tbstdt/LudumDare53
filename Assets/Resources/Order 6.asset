@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Resources:
   - Amount: 4
-    Type: 1
+    Type: 0
   - Amount: 2
-    Type: 2
+    Type: 1
   TimeInSeconds: 45
   MoneyReward: 60
   ReputationReward: 1
   ReputationPenalty: 1
   StartOrderRequirementDeliveryCount: 0
-  EndOrderRequirementDeliveryCount: 50
+  EndOrderRequirementDeliveryCount: 8

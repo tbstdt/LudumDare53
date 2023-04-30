@@ -874,13 +874,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_randomResoures:
-  - Amount: 2
-    Type: 0
-  - Amount: 3
-    Type: 1
   - Amount: 1
+    Type: 3
+  - Amount: 50
+    Type: 3
+  - Amount: 6
+    Type: 0
+  - Amount: 6
+    Type: 1
+  - Amount: 6
     Type: 2
-  - Amount: 5
+  - Amount: 30
     Type: 3
   m_mapPoints:
   - {fileID: 206354572}
@@ -890,7 +894,7 @@ MonoBehaviour:
   - {fileID: 488464416}
   - {fileID: 1455095632}
   - {fileID: 77387779}
-  m_spawnTime: 20
+  m_spawnTime: 30
 --- !u!4 &1004044305
 Transform:
   m_ObjectHideFlags: 0
