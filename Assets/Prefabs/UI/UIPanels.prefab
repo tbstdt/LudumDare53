@@ -1302,7 +1302,7 @@ MonoBehaviour:
   _resourceThree: {fileID: 8987368842330297498}
   _resourceMoney: {fileID: 8987368842582766609}
   _mans: {fileID: 8987368842071644171}
-  _maxOrders: 50
+  _maxOrders: 25
   _orders: {fileID: 2601181463941668925}
 --- !u!1 &2006518172262266739
 GameObject:
