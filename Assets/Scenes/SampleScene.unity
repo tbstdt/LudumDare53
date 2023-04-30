@@ -123,9 +123,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &35065883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 35065883, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+  m_PrefabInstance: {fileID: 7340004307166231139}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392a28d056754ff388ace55ea4d7d1d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &82077831 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4721300290094190574, guid: 4fcc9e11af8e94ab8a61919e8b911c03, type: 3}
+  m_PrefabInstance: {fileID: 4721300290042013545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &117326461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1058814768079908838, guid: 4fcc9e11af8e94ab8a61919e8b911c03, type: 3}
   m_PrefabInstance: {fileID: 4721300290042013545}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &171455237 stripped
@@ -650,6 +666,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &721760686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3214015347755031129, guid: 4fcc9e11af8e94ab8a61919e8b911c03, type: 3}
+  m_PrefabInstance: {fileID: 4721300290042013545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &787599926 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4721300289457943903, guid: 4fcc9e11af8e94ab8a61919e8b911c03, type: 3}
@@ -1000,6 +1021,7 @@ MonoBehaviour:
   _orderGenerator: {fileID: 171455237}
   _uiManager: {fileID: 7340004307166231141}
   _soundManager: {fileID: 1263029260}
+  _endGamePanel: {fileID: 35065883}
 --- !u!4 &1471757462
 Transform:
   m_ObjectHideFlags: 0
@@ -1274,6 +1296,14 @@ PrefabInstance:
       propertyPath: _points.Array.data[6].Point
       value: 
       objectReference: {fileID: 1436132459}
+    - target: {fileID: 4966705821988700254, guid: da96ae2497d0b4445bbb77abb095fdea, type: 3}
+      propertyPath: _points.Array.data[7].Point
+      value: 
+      objectReference: {fileID: 117326461}
+    - target: {fileID: 4966705821988700254, guid: da96ae2497d0b4445bbb77abb095fdea, type: 3}
+      propertyPath: _points.Array.data[8].Point
+      value: 
+      objectReference: {fileID: 721760686}
     - target: {fileID: 6209866862298318468, guid: da96ae2497d0b4445bbb77abb095fdea, type: 3}
       propertyPath: m_Name
       value: MapGenerator
@@ -1354,7 +1384,7 @@ PrefabInstance:
       objectReference: {fileID: 422898074}
     - target: {fileID: 4716517607743505622, guid: 4097e9f51970842d38e8f31159117060, type: 3}
       propertyPath: m_prefabs.Array.data[1].ObjectType
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4716517607743505623, guid: 4097e9f51970842d38e8f31159117060, type: 3}
       propertyPath: m_RootOrder
@@ -1617,6 +1647,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 545419967}
     m_Modifications:
+    - target: {fileID: 543982007, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 543982007, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 543982007, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 543982007, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477535344, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477535344, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477535344, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477535344, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060562502, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060562502, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060562502, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060562502, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1813127280477728504, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
       propertyPath: m_Name
       value: UIPanels

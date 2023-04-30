@@ -5,22 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Sources.Editor.UI {
-	public class EndGamePanel : MonoBehaviour, ICoreRegistrable {
+	public class EndGamePanel : MonoBehaviour, ICoreRegistrable, ICoreInit {
 		
 		[SerializeField] private TMP_Text _endGameText;
 		[SerializeField] private Button _exit;
 		[SerializeField] private Button _restart;
 
-		private void Start() {
-			_exit.onClick.AddListener(AppUtils.Exit);
-			_restart.onClick.AddListener(AppUtils.Restart);
-			
-			GameCore.Instance.Register<EndGamePanel>(this);
-		}
-
 		public void Show(bool gameResult) {
 			gameObject.SetActive(true);
 			_endGameText.text = gameResult ? "Congratulations! You won!" : "Unfortunately you lost";
+		}
+
+		public void Init() {
+			_exit.onClick.AddListener(AppUtils.Exit);
+			_restart.onClick.AddListener(AppUtils.Restart);
 		}
 	}
 }

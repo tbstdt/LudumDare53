@@ -12,6 +12,7 @@ namespace Sources.core
 		[SerializeField] private OrderGenerator _orderGenerator;
 		[SerializeField] private UIManager _uiManager;
 		[SerializeField] private SoundManager _soundManager;
+		[SerializeField] private EndGamePanel _endGamePanel;
 
 		private static CoreManagerProvider _coreManagerProvider;
 
@@ -24,6 +25,7 @@ namespace Sources.core
 				Instance.Register<OrderGenerator>(_orderGenerator);
 				Instance.Register<UIManager>(_uiManager);
 				Instance.Register<SoundManager>(_soundManager);
+				Instance.Register<EndGamePanel>(_endGamePanel);
 
 				Instance.InitManagers();
 		}

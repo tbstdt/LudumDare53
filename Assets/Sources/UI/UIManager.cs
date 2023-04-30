@@ -46,6 +46,10 @@ namespace Sources.Editor.UI {
 		public void UpdateOrders()
 		{
 			_orders.text = $"{++_curOrders}/{_maxOrders}";
+
+			if (_curOrders == _maxOrders) {
+				GameCore.Instance.Get<EndGamePanel>().Show(true);
+			}
 		}
 	}
 }
