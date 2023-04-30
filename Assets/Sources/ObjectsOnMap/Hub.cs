@@ -114,28 +114,37 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     private void SpeedUpgradeHandler()
     {
-        m_resources[ResourceType.Money] -= _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].Cost;
-        _speedUpgrade = _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].ValueChange;
-        _curSpeedUpgradeIndex++;
+        if (m_resources[ResourceType.Money] >= _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].Cost) {
+            m_resources[ResourceType.Money] -= _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].Cost;
+            _speedUpgrade = _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].ValueChange;
+            _curSpeedUpgradeIndex++;
+        }
+       
         UpdateAllUpgradesView();
         UpdateResource();
     }
 
     private void WeightUpgradeHandler()
     {
-        m_resources[ResourceType.Money] -= _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].Cost;
-        _rpsUpgrade = _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].ValueChange;
-        _curWeightUpgradeIndex++;
+        if (m_resources[ResourceType.Money] >= _upgradesData.WeightUpgrades[_curSpeedUpgradeIndex].Cost) {
+            m_resources[ResourceType.Money] -= _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].Cost;
+            _rpsUpgrade = _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].ValueChange;
+            _curWeightUpgradeIndex++;
+        }
+       
         UpdateAllUpgradesView();
         UpdateResource();
     }
 
     private void MenUpgradeHandler()
     {
-        m_resources[ResourceType.Money] -= _upgradesData.MenUpgrades[_curMenUpgradeIndex].Cost;
-        m_availableMen += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
-        _maxMenCount += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
-        _curMenUpgradeIndex++;
+        if (m_resources[ResourceType.Money] >= _upgradesData.MenUpgrades[_curSpeedUpgradeIndex].Cost) {
+            m_resources[ResourceType.Money] -= _upgradesData.MenUpgrades[_curMenUpgradeIndex].Cost;
+            m_availableMen += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
+            _maxMenCount += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
+            _curMenUpgradeIndex++;
+        }
+      
         UpdateAllUpgradesView();
         UpdateResource();
     }
