@@ -116,6 +116,7 @@ public class Customer : ObjectOnMap
 
     private void OnTimeout()
     {
+        StopAllCoroutines();
         m_timeout = true;
 
         if (Order != null)
@@ -170,7 +171,7 @@ public class Customer : ObjectOnMap
 
     private void updateReputation(int value) {
         m_reputation += value;
-        m_reputation = Mathf.Clamp(m_reputation, 0, 5);
+        m_reputation = Mathf.Clamp(m_reputation, -1, 5);
         _reputationView.UpdateReputation(m_reputation);
         
         if (m_reputation < 0) {
