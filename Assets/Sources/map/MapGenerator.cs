@@ -24,10 +24,10 @@ namespace Sources.map {
 				SetObject(out var objectOnMap, mapPoint.Type, mapPoint.Point);
 		}
 
-		public void SpawnObject(Resource resource, GameObject point)
+		public ObjectOnMap SpawnRandomObject(GameObject point)
 		{
 			SetObject(out var objectOnMap, ObjectType.Resource | ObjectType.Random, point);
-			(objectOnMap as RandomResourcePlace)?.SetResource(resource);
+			return objectOnMap;
 		}
 	}
 

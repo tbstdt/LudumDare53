@@ -17,6 +17,8 @@ public class ResourcePlace : ObjectOnMap
 
     public override ObjectType Type => ObjectType.Resource;
 
+    public Action<ObjectOnMap> OnHide;
+
     private void Start() {
         _resourceCountText.text = _resource.Amount.ToString();
     }
@@ -68,6 +70,7 @@ public class ResourcePlace : ObjectOnMap
 
         if (_menInside == 0 && _resource.Amount == 0) {
             _view.SetActive(false);
+            OnHide?.Invoke(this);
         }
     }
 }
