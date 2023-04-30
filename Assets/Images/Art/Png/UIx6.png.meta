@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -171,10 +171,10 @@ TextureImporter:
       name: UIx6_3
       rect:
         serializedVersion: 2
-        x: 1308
-        y: 384
-        width: 150
-        height: 150
+        x: 1734
+        y: 792
+        width: 30
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +192,10 @@ TextureImporter:
       name: UIx6_4
       rect:
         serializedVersion: 2
-        x: 1494
-        y: 384
-        width: 150
-        height: 150
+        x: 1320
+        y: 732
+        width: 444
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: UIx6_5
       rect:
         serializedVersion: 2
-        x: 1674
-        y: 384
-        width: 150
-        height: 150
+        x: 1338
+        y: 606
+        width: 402
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: UIx6_6
       rect:
         serializedVersion: 2
-        x: 1488
-        y: 204
-        width: 96
-        height: 96
+        x: 1308
+        y: 384
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,10 +255,10 @@ TextureImporter:
       name: UIx6_7
       rect:
         serializedVersion: 2
-        x: 1590
-        y: 204
-        width: 96
-        height: 96
+        x: 1494
+        y: 384
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,6 +276,69 @@ TextureImporter:
       name: UIx6_8
       rect:
         serializedVersion: 2
+        x: 1674
+        y: 384
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11dff291d1fa96e458d41b3a74455a64
+      internalID: 1708220358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIx6_9
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 204
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49b607f476542f245869024f35d67e27
+      internalID: 801150409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIx6_10
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 204
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e986105c0934942926d7d9e6ce749e
+      internalID: 1018572594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIx6_11
+      rect:
+        serializedVersion: 2
         x: 36
         y: 24
         width: 252
@@ -287,8 +350,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11dff291d1fa96e458d41b3a74455a64
-      internalID: 1708220358
+      spriteID: b7f669933906cbb41995670459b44ed2
+      internalID: 278478812
       vertices: []
       indices: 
       edges: []
@@ -306,6 +369,8 @@ TextureImporter:
     nameFileIdTable:
       UIx6_0: -503751009
       UIx6_1: 663392918
+      UIx6_10: 1018572594
+      UIx6_11: 278478812
       UIx6_2: -1802887324
       UIx6_3: -1318199559
       UIx6_4: 120982898
@@ -313,6 +378,7 @@ TextureImporter:
       UIx6_6: -865506358
       UIx6_7: 1853068629
       UIx6_8: 1708220358
+      UIx6_9: 801150409
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
