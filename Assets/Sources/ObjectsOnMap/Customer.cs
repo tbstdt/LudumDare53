@@ -90,6 +90,10 @@ public class Customer : ObjectOnMap
             Order = null;
         }
 
+        if (m_manOnRoad && Order != null) {
+            updateReputation(-Order.ReputationPenalty);
+        }
+
         StartCoroutine(ReorderTimer(OrderGenerator.REORDER_TIME_SECONDS));
     }
 
@@ -120,6 +124,8 @@ public class Customer : ObjectOnMap
 
             updateReputation(Order.ReputationReward);
         }
+      
+        Order = null;
 
         StartCoroutine(ReorderTimer(OrderGenerator.REORDER_TIME_SECONDS));
     }
