@@ -176,6 +176,7 @@ public class Customer : ObjectOnMap
         
         if (m_reputation < 0) {
             m_timerGO.SetActive(false);
+            Debug.Log($"You lose because reputation is {m_reputation} in {gameObject.scene.path}");
             GameCore.Instance.Get<EndGamePanel>().Show(false);
         }
     }
