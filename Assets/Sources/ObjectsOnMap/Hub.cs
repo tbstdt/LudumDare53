@@ -76,7 +76,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     private bool canUpgrade() {
         var canUpgrade = false;
-        
+
         canUpgrade |= GetViewData(out bool _, out int _, out bool _, _curSpeedUpgradeIndex, _upgradesData.SpeedUpgrades);
         canUpgrade |= GetViewData(out bool _, out int _, out bool _, _curWeightUpgradeIndex, _upgradesData.WeightUpgrades);
         canUpgrade |= GetViewData(out bool _, out int _, out bool _, _curMenUpgradeIndex, _upgradesData.MenUpgrades);
@@ -116,7 +116,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         m_resources[ResourceType.Money] -= _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].Cost;
         _speedUpgrade = _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].ValueChange;
         _curSpeedUpgradeIndex++;
-        UpdateSpeedUpgrade();
+        UpdateAllUpgradesView();
         UpdateResource();
     }
 
@@ -125,7 +125,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         m_resources[ResourceType.Money] -= _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].Cost;
         _rpsUpgrade = _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].ValueChange;
         _curWeightUpgradeIndex++;
-        UpdateWeightUpgrade();
+        UpdateAllUpgradesView();
         UpdateResource();
     }
 
@@ -135,7 +135,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         m_availableMen += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
         _maxMenCount += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
         _curMenUpgradeIndex++;
-        UpdateMenUpgrade();
+        UpdateAllUpgradesView();
         UpdateResource();
     }
 
