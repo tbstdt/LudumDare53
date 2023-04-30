@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Order 12
   m_EditorClassIdentifier: 
   Resources:
-  - Amount: 8
+  - Amount: 10
     Type: 0
-  - Amount: 8
+  - Amount: 10
     Type: 1
   TimeInSeconds: 25
   MoneyReward: 180
   ReputationReward: 1
   ReputationPenalty: 1
-  StartOrderRequirementDeliveryCount: 14
+  StartOrderRequirementDeliveryCount: 12
   EndOrderRequirementDeliveryCount: 50

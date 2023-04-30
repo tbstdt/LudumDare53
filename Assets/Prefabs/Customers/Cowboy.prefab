@@ -570,7 +570,7 @@ MonoBehaviour:
   m_timerView: {fileID: 2255779024012570150}
   m_timerGO: {fileID: 5773890911431792889}
   m_costAmountText: {fileID: 5990776043467776968}
-  m_StartFirstQuest: 3
+  m_StartFirstQuest: 10
   m_reputation: 3
   _reputationView: {fileID: 8618659855059067284}
   _resourceBalloon: {fileID: 1320303568191140883}

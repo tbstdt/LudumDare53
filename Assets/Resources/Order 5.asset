@@ -17,9 +17,9 @@ MonoBehaviour:
     Type: 1
   - Amount: 2
     Type: 2
-  TimeInSeconds: 45
-  MoneyReward: 60
+  TimeInSeconds: 40
+  MoneyReward: 80
   ReputationReward: 1
   ReputationPenalty: 1
-  StartOrderRequirementDeliveryCount: 0
+  StartOrderRequirementDeliveryCount: 1
   EndOrderRequirementDeliveryCount: 8

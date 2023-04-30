@@ -17,7 +17,7 @@ MonoBehaviour:
     Type: 2
   - Amount: 6
     Type: 0
-  TimeInSeconds: 35
+  TimeInSeconds: 30
   MoneyReward: 100
   ReputationReward: 1
   ReputationPenalty: 1
