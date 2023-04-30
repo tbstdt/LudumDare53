@@ -11,6 +11,7 @@ namespace Sources.Editor.UI {
 		[SerializeField] private Slider _musicSlider;
 
 		[SerializeField] private Button _resumeButton;
+		[SerializeField] private Button _restartButton;
 		[SerializeField] private Button _exitButton;
 
 		[SerializeField] private GameObject _settingsPanel;
@@ -27,14 +28,8 @@ namespace Sources.Editor.UI {
 			_musicSlider.onValueChanged.AddListener(_ => setVolume("Music", _musicSlider));
 
 			_resumeButton.onClick.AddListener(() => _settingsPanel.SetActive(false));
-			_exitButton.onClick.AddListener(() => {
-#if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false;
-#else
-				Application.Quit();
-
-#endif
-			});
+			_restartButton.onClick.AddListener(AppUtils.Restart);
+			_exitButton.onClick.AddListener(AppUtils.Exit);
 		}
 
 		private void setVolume(string id, Slider slider) {

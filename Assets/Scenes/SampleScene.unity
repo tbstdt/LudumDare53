@@ -1352,6 +1352,10 @@ PrefabInstance:
       propertyPath: _poolContainer
       value: 
       objectReference: {fileID: 422898074}
+    - target: {fileID: 4716517607743505622, guid: 4097e9f51970842d38e8f31159117060, type: 3}
+      propertyPath: m_prefabs.Array.data[1].ObjectType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4716517607743505623, guid: 4097e9f51970842d38e8f31159117060, type: 3}
       propertyPath: m_RootOrder
       value: 5

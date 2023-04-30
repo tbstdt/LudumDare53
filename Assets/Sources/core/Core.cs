@@ -34,6 +34,11 @@ namespace Sources.core {
 			_typesMap.Remove(typeof(T));
 		}
 
+		public void Dispode() {
+			_typesMap.Clear();
+			_coreInits.Clear();
+		}
+
 		public void InitManagers() {
 			foreach (var coreInit in _coreInits) {
 				coreInit.Init();
