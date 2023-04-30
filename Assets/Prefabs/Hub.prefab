@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3502641629946867540
 RectTransform:
   m_ObjectHideFlags: 0
@@ -214,6 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manCount: 10
+  _upgradePanel: {fileID: 8073141182182238767}
+  _upgradesData: {fileID: 11400000, guid: 4d25b3eefa44052409a3709dee5ee167, type: 2}
   TimeToWork: 3
 --- !u!1001 &1779391039234850956
 PrefabInstance:
@@ -365,3 +367,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 479906360837825852, guid: 2383a623cb0d5904ba90977a9f6dc271, type: 3}
   m_PrefabInstance: {fileID: 1779391039234850956}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8073141182182238767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7545822515719301795, guid: 2383a623cb0d5904ba90977a9f6dc271, type: 3}
+  m_PrefabInstance: {fileID: 1779391039234850956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe7cf09fddf50342aea57fd2b4d9309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

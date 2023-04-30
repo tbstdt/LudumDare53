@@ -221,7 +221,7 @@ MonoBehaviour:
   _view: {fileID: 3294774567989725212}
   _resourceCountText: {fileID: 4274789975002933136}
   _resource:
-    Amount: 100
+    Amount: 10000
     Type: 0
 --- !u!1 &7203577452728663157
 GameObject:

@@ -10,7 +10,6 @@ namespace Sources.map {
 	public class MapManager : MonoBehaviour, ICoreRegistrable {
 		[SerializeField] private List<GameObject> _mapPoints;
 		[SerializeField] private Transform _manContainer;
-		[SerializeField] private float _manSpeed = 3f;
 		[SerializeField] private float _minPointDistance = 70f;
 
 		private List<GraphNode> _graphNodes = new();
@@ -50,7 +49,8 @@ namespace Sources.map {
 				pathPositions.Add(path[index].transform.position);
 			}
 
-			man.transform.DOPath(pathPositions.ToArray(), _manSpeed, PathType.CatmullRom, PathMode.TopDown2D)
+			float manSpeed = GameCore.Instance.Get<Hub>().ManSpeed;
+			man.transform.DOPath(pathPositions.ToArray(), manSpeed, PathType.CatmullRom, PathMode.TopDown2D)
 				.SetEase(Ease.Linear)
 				.OnComplete(()=> {
 					if (end != null) {
