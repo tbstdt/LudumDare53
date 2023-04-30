@@ -214,9 +214,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manCount: 10
+  _manSpeed: 3
   _upgradePanel: {fileID: 8073141182182238767}
   _upgradesData: {fileID: 11400000, guid: 4d25b3eefa44052409a3709dee5ee167, type: 2}
   TimeToWork: 3
+  CurrentDeliveryCount: 0
 --- !u!1001 &1779391039234850956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,6 +342,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1217567566019100190, guid: 2383a623cb0d5904ba90977a9f6dc271, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -865506358, guid: 7ede06ac6ffb9e447922e5e56abd310d, type: 3}
     - target: {fileID: 1795763408274663739, guid: 2383a623cb0d5904ba90977a9f6dc271, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -356,6 +362,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3562694632723395143, guid: 2383a623cb0d5904ba90977a9f6dc271, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1708220358, guid: 7ede06ac6ffb9e447922e5e56abd310d, type: 3}
+    - target: {fileID: 3928106333688604598, guid: 2383a623cb0d5904ba90977a9f6dc271, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1853068629, guid: 7ede06ac6ffb9e447922e5e56abd310d, type: 3}
     - target: {fileID: 4041006202739652378, guid: 2383a623cb0d5904ba90977a9f6dc271, type: 3}
       propertyPath: m_Name
       value: UpgradePanel
