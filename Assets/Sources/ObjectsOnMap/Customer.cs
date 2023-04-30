@@ -29,6 +29,7 @@ public class Customer : ObjectOnMap
     [SerializeField] private int m_StartFirstQuest = 10;
     [SerializeField] private int m_reputation = 3;
     [SerializeField] private ReputationView _reputationView;
+    [SerializeField] private ResourceBalloon _resourceBalloon;
 
     private OrderGenerator m_orderGenerator;
 
@@ -146,6 +147,7 @@ public class Customer : ObjectOnMap
             UpdateOrders();
 
         var reward = Order != null ? new List<Resource> { Order.Reward } : null;
+        _resourceBalloon.Show(man.Resources);
 
         mapManager.LaunchMan(this, hub, reward);
 

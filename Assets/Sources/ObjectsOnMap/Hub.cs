@@ -11,6 +11,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     [SerializeField] private float _manSpeed = 3f;
     [SerializeField] private UpgradePanel _upgradePanel;
     [SerializeField] private UpgradesDataSO _upgradesData;
+    [SerializeField] private ResourceBalloon _resourceBalloon;
 
     [SerializeField] private Image _canUpgrade;
 
@@ -197,7 +198,9 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             foreach (var resource in man.Resources) {
                 m_resources[resource.Type] += resource.Amount;
             }
+            _resourceBalloon.Show(man.Resources);
         }
+        
         UpdateResource();
         UpdateAllUpgradesView();
     }
