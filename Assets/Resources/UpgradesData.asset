@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: UpgradesData
   m_EditorClassIdentifier: 
   SpeedUpgrades:
-  - Cost: 100
-    ValueChange: 1.4
-  - Cost: 200
+  - Cost: 150
+    ValueChange: 1.2
+  - Cost: 600
     ValueChange: 2
   WeightUpgrades:
-  - Cost: 100
+  - Cost: 350
     ValueChange: 1.5
-  - Cost: 200
+  - Cost: 400
     ValueChange: 2
   MenUpgrades:
   - Cost: 150

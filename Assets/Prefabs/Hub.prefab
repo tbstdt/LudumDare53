@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cb6813526a3924193d0f0e8fa2678f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _manCount: 10
+  _manCount: 3
   _manSpeed: 3
   _upgradePanel: {fileID: 8073141182182238767}
   _upgradesData: {fileID: 11400000, guid: 4d25b3eefa44052409a3709dee5ee167, type: 2}
