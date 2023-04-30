@@ -108,7 +108,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         cost = btnActive ? data[index].Cost : -1;
         interactable = btnActive && m_resources[ResourceType.Money] >= data[index].Cost;
 
-        return btnActive;
+        return interactable;
     }
 
     private void SpeedUpgradeHandler()
