@@ -4,7 +4,6 @@ using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
 using Sources.map;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Hub : ObjectOnMap, ICoreRegistrable {
     [SerializeField] private int _manCount = 3;
@@ -139,9 +138,9 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         return false;
     }
 
-        public bool TrySendCourier(Customer customer) {
+    public bool TrySendCourier(Customer customer) {
         var succesVerifyCount = 0;
-        
+
         foreach (var orderResource in customer.Order.Resources) {
             if (m_resources[orderResource.Type] >= orderResource.Amount) {
                 succesVerifyCount++;
@@ -149,14 +148,14 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         }
 
         if (succesVerifyCount == customer.Order.Resources.Count) {
-            
+
             foreach (var orderResource in customer.Order.Resources) {
                 if (m_resources[orderResource.Type] >= orderResource.Amount)
                 {
                     m_resources[orderResource.Type] -= orderResource.Amount;
                 }
             }
-            
+
             GameCore.Instance.Get<MapManager>().LaunchMan(this, customer, customer.Order.Resources);
             m_availableMen--;
             UpdateResource();
@@ -166,13 +165,15 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         return false;
     }
 
-    public void TrySendWorker(ResourcePlace resPlace) {
+    public bool TrySendWorker(ResourcePlace resPlace) {
         if (m_availableMen > 0)
         {
             GameCore.Instance.Get<MapManager>().LaunchMan(this, resPlace, null);
             m_availableMen--;
             UpdateResource();
+            return true;
         }
+        return false;
     }
 
     public override void Job(Man man) {
