@@ -35,18 +35,19 @@ public class RandomResourceGenerator : MonoBehaviour, ICoreRegistrable
 
                 var objectOnMap = GameCore.Instance.Get<MapGenerator>().SpawnRandomObject(point);
                 var place = (RandomResourcePlace)objectOnMap;
-                place.SetResource(m_randomResoures[Random.Range(0, m_randomResoures.Count)]);
+                var resource = m_randomResoures[Random.Range(0, m_randomResoures.Count)];
+                place.SetResource(new Resource(resource.Type, resource.Amount));
                 place.OnHide = OnPlaceDestroy;
                 m_usedPoint.Add(objectOnMap, point);
             }
         }
     }
 
-    private void OnPlaceDestroy(ObjectOnMap objectOnMap)
+    private void OnPlaceDestroy(RandomResourcePlace objectOnMap)
     {
         var point = m_usedPoint[objectOnMap];
         m_availablePoints.Add(point);
         m_usedPoint.Remove(objectOnMap);
-        ((ResourcePlace)objectOnMap).OnHide = null;
+        objectOnMap.OnHide = null;
     }
 }

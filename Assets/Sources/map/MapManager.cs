@@ -49,7 +49,7 @@ namespace Sources.map {
 				pathPositions.Add(path[index].transform.position);
 			}
 
-			float manSpeed = GameCore.Instance.Get<Hub>().ManSpeed;
+			float manSpeed = GameCore.Instance.Get<Hub>().ManSpeed * pathPositions.Count * .1f;
 			man.transform.DOPath(pathPositions.ToArray(), manSpeed, PathType.CatmullRom, PathMode.TopDown2D)
 				.SetEase(Ease.Linear)
 				.OnComplete(()=> {
