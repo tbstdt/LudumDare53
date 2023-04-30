@@ -164,27 +164,28 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     }
 
     public bool TrySendCourier(Customer customer) {
-        var succesVerifyCount = 0;
-
-        foreach (var orderResource in customer.Order.Resources) {
-            if (m_resources[orderResource.Type] >= orderResource.Amount) {
-                succesVerifyCount++;
-            }
-        }
-
-        if (succesVerifyCount == customer.Order.Resources.Count) {
+        if (m_availableMen > 0) {
+            var succesVerifyCount = 0;
 
             foreach (var orderResource in customer.Order.Resources) {
-                if (m_resources[orderResource.Type] >= orderResource.Amount)
-                {
-                    m_resources[orderResource.Type] -= orderResource.Amount;
+                if (m_resources[orderResource.Type] >= orderResource.Amount) {
+                    succesVerifyCount++;
                 }
             }
 
-            GameCore.Instance.Get<MapManager>().LaunchMan(this, customer, customer.Order.Resources);
-            m_availableMen--;
-            UpdateResource();
-            return true;
+            if (succesVerifyCount == customer.Order.Resources.Count) {
+
+                foreach (var orderResource in customer.Order.Resources) {
+                    if (m_resources[orderResource.Type] >= orderResource.Amount) {
+                        m_resources[orderResource.Type] -= orderResource.Amount;
+                    }
+                }
+
+                GameCore.Instance.Get<MapManager>().LaunchMan(this, customer, customer.Order.Resources);
+                m_availableMen--;
+                UpdateResource();
+                return true;
+            }
         }
 
         return false;
