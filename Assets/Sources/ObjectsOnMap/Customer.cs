@@ -14,14 +14,15 @@ public class Customer : ObjectOnMap
     [SerializeField] private TextMeshProUGUI m_timerTime;
     [SerializeField] private Image m_timerView;
     [SerializeField] private GameObject m_timerGO;
+    [Space]
+    [SerializeField] private int m_StartFirstQuest = 10;
+    [SerializeField] private int m_reputation = 3;
 
     private OrderGenerator m_orderGenerator;
 
     private int m_timerInSeconds;
     private bool m_timeout;
     private bool m_manOnRoad;
-
-    private int m_reputation = 0;
 
     public Order Order { get; private set; }
 
@@ -31,7 +32,7 @@ public class Customer : ObjectOnMap
     {
         m_orderGenerator = GameCore.Instance.Get<OrderGenerator>();
 
-        StartOrder();
+        StartCoroutine(ReorderTimer(m_StartFirstQuest));
     }
 
     private void StartOrder()
@@ -51,9 +52,9 @@ public class Customer : ObjectOnMap
         StartCoroutine(StartTimer());
     }
 
-    private IEnumerator ReorderTimer()
+    private IEnumerator ReorderTimer(int time)
     {
-        yield return new WaitForSeconds(OrderGenerator.REORDER_TIME_SECONDS);
+        yield return new WaitForSeconds(time);
         StartOrder();
     }
 
@@ -80,13 +81,14 @@ public class Customer : ObjectOnMap
     private void OnTimeout()
     {
         m_timeout = true;
-        if (!m_manOnRoad)
+
+        if (!m_manOnRoad && Order != null)
         {
             m_reputation -= Order.ReputationPenalty;
             Order = null;
         }
 
-        StartCoroutine(ReorderTimer());
+        StartCoroutine(ReorderTimer(OrderGenerator.REORDER_TIME_SECONDS));
     }
 
     protected override void OnObjectClicked()
@@ -99,15 +101,6 @@ public class Customer : ObjectOnMap
     }
 
     public override void Job(Man man) {
-        if (!m_timeout)
-        {
-            StopCoroutine(StartTimer());
-            m_timeout = true;
-            m_timerGO.SetActive(false);
-
-            m_reputation = Order.ReputationReward;
-        }
-
         m_manOnRoad = false;
         var mapManager = GameCore.Instance.Get<MapManager>();
 
@@ -119,6 +112,15 @@ public class Customer : ObjectOnMap
 
         mapManager.LaunchMan(this, hub, Order.Reward);
         Order = null;
-        StartCoroutine(ReorderTimer());
+
+        if (!m_timeout)
+        {
+            m_timeout = true;
+            m_timerGO.SetActive(false);
+
+            m_reputation += Order.ReputationReward;
+        }
+
+        StartCoroutine(ReorderTimer(OrderGenerator.REORDER_TIME_SECONDS));
     }
 }
