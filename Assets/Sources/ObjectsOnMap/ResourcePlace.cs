@@ -11,7 +11,7 @@ public class ResourcePlace : ObjectOnMap
 {
     [SerializeField] private GameObject _view;
     [SerializeField] private TextMeshProUGUI _resourceCountText;
-    [SerializeField] private Resource _resource;
+    [SerializeField] protected Resource _resource;
 
     private int _menInside = 0;
 

@@ -8,14 +8,26 @@ namespace Sources.map {
 		[SerializeField] private List<MapPoint> _points;
 		[SerializeField] private Transform _container;
 
+		private ObjectsStorage _objectStorage;
+
+		private void SetObject(out ObjectOnMap objectOnMap, ObjectType type, GameObject point)
+		{
+			objectOnMap = _objectStorage.GetObjectByType(type);
+			objectOnMap.transform.SetParent(_container);
+			objectOnMap.transform.position = point.transform.position;
+			objectOnMap.AddMapPoint(point);
+		}
+
 		public void Init() {
-			var objectStorage = GameCore.Instance.Get<ObjectsStorage>();
-			foreach (var mapPoint in _points) {
-				var objectOnMap = objectStorage.GetObjectByType(mapPoint.Type);
-				objectOnMap.transform.SetParent(_container);
-				objectOnMap.transform.position = mapPoint.Point.transform.position;
-				objectOnMap.AddMapPoint(mapPoint.Point);
-			}
+			_objectStorage = GameCore.Instance.Get<ObjectsStorage>();
+			foreach (var mapPoint in _points)
+				SetObject(out var objectOnMap, mapPoint.Type, mapPoint.Point);
+		}
+
+		public void SpawnObject(Resource resource, GameObject point)
+		{
+			SetObject(out var objectOnMap, ObjectType.Resource | ObjectType.Random, point);
+			(objectOnMap as RandomResourcePlace)?.SetResource(resource);
 		}
 	}
 

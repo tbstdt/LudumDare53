@@ -65,4 +65,6 @@ MonoBehaviour:
     ObjectPrefab: {fileID: -378670045800067719, guid: dc0956d29b561bd47b35e1fc763015e7, type: 3}
   - ObjectType: 4608
     ObjectPrefab: {fileID: -378670045800067719, guid: a26773dd23fa4574da350ea5e83063c6, type: 3}
+  - ObjectType: 8704
+    ObjectPrefab: {fileID: 2023869679431564834, guid: 8a382cd7086261743946f957a549b4f8, type: 3}
   _poolContainer: {fileID: 0}
