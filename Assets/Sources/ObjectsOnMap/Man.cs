@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Sources.Editor.ObjectsOnMap {
@@ -18,11 +14,7 @@ namespace Sources.Editor.ObjectsOnMap {
 		[SerializeField] private TMP_Text _resourceTextTwo;
 		[SerializeField] private TMP_Text _resourceTextThree;
 		[SerializeField] private TMP_Text _resourceTextMoney;
-		
-		[SerializeField] private Transform  _startPosition;
-		[SerializeField] private Transform  _endPosition;
 
-		[SerializeField] private float _timeToLiveResource = 1f;
 		private List<Resource> _resources;
 
 
@@ -33,18 +25,20 @@ namespace Sources.Editor.ObjectsOnMap {
 			set {
 				_resources = value;
 
-				StartCoroutine(ShowGatherAnimation());
+				showGatherAnimation();
 			}
 		}
 		
-		private IEnumerator ShowGatherAnimation() {
+		private void showGatherAnimation() {
+			_resourceOne.SetActive(false);
+			_resourceTwo.SetActive(false);
+			_resourceThree.SetActive(false);
+			_resourceMoney.SetActive(false);
 
 			if (_resources == null) {
-				yield break;
+				return;
 			}
 
-			yield return new WaitForSeconds(0.5f);
-			
 			foreach (var resource in _resources) {
 				switch (resource.Type) {
 					case ResourceType.One:
@@ -64,15 +58,11 @@ namespace Sources.Editor.ObjectsOnMap {
 						_resourceTextMoney.text = resource.Amount.ToString();
 						break;
 				}
-				
-				yield return new WaitForSeconds(0.5f);
 			}
 		}
 
 		private void showResource(GameObject resource) {
 			resource.SetActive(true);
-			resource.transform.position = _startPosition.transform.position;
-			resource.transform.DOMoveY(_endPosition.transform.position.y, _timeToLiveResource).OnComplete(()=>resource.SetActive(false));
 		}
 		
 		protected override void OnObjectClicked() { }
