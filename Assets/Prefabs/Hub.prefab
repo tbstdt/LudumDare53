@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3502641629946867540
 RectTransform:
   m_ObjectHideFlags: 0
@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82.5, y: 171.7}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 150, y: 143.26}
+  m_SizeDelta: {x: 120, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2769152492956612464
 CanvasRenderer:
@@ -135,14 +135,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.074186325, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 465004751, guid: d993c3f6d6dfa44f9bbec96a009662d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -218,6 +218,7 @@ MonoBehaviour:
   _manSpeed: 3
   _upgradePanel: {fileID: 8073141182182238767}
   _upgradesData: {fileID: 11400000, guid: 4d25b3eefa44052409a3709dee5ee167, type: 2}
+  _canUpgrade: {fileID: 2374698177977074924}
   TimeToWork: 2
   CurrentDeliveryCount: 0
 --- !u!95 &1061188661379571400

@@ -4,13 +4,15 @@ using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
 using Sources.map;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Hub : ObjectOnMap, ICoreRegistrable {
     [SerializeField] private int _manCount = 3;
     [SerializeField] private float _manSpeed = 3f;
     [SerializeField] private UpgradePanel _upgradePanel;
     [SerializeField] private UpgradesDataSO _upgradesData;
+
+    [SerializeField] private Image _canUpgrade;
 
     private float _speedUpgrade = 1;
     private float _rpsUpgrade = 1;
@@ -28,8 +30,8 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     private Dictionary<ResourceType, int> m_resourcePerSecond = new () {
         {ResourceType.One, 1},
-        {ResourceType.Two, 2},
-        {ResourceType.Three, 3},
+        {ResourceType.Two, 1},
+        {ResourceType.Three, 1},
     };
 
     public float ManSpeed => _manSpeed / _speedUpgrade;
@@ -72,6 +74,16 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         UpdateMenUpgrade();
     }
 
+    private bool canUpgrade() {
+        var canUpgrade = false;
+        
+        canUpgrade |= GetViewData(out bool _, out int _, out bool _, _curSpeedUpgradeIndex, _upgradesData.SpeedUpgrades);
+        canUpgrade |= GetViewData(out bool _, out int _, out bool _, _curWeightUpgradeIndex, _upgradesData.WeightUpgrades);
+        canUpgrade |= GetViewData(out bool _, out int _, out bool _, _curMenUpgradeIndex, _upgradesData.MenUpgrades);
+
+        return canUpgrade;
+    }
+
     private void UpdateSpeedUpgrade()
     {
         GetViewData(out bool btnActive, out int cost, out bool interactable, _curSpeedUpgradeIndex, _upgradesData.SpeedUpgrades);
@@ -90,11 +102,13 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         _upgradePanel.SetMenUpgrade(btnActive, cost, interactable);
     }
 
-    private void GetViewData(out bool btnActive, out int cost, out bool interactable, int index, List<UpgradeData> data)
+    private bool GetViewData(out bool btnActive, out int cost, out bool interactable, int index, List<UpgradeData> data)
     {
         btnActive = index < data.Count;
         cost = btnActive ? data[index].Cost : -1;
         interactable = btnActive && m_resources[ResourceType.Money] >= data[index].Cost;
+
+        return btnActive;
     }
 
     private void SpeedUpgradeHandler()
@@ -188,6 +202,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     private void UpdateResource() {
         GameCore.Instance.Get<UIManager>().UpdateResource(m_resources, m_availableMen, _maxMenCount);
+        _canUpgrade.gameObject.SetActive(canUpgrade());
     }
 
     public void UpdateOrders() {
