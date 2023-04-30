@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5079797455237712695}
   - component: {fileID: 9068165761519190839}
   - component: {fileID: 8517312493893480977}
+  - component: {fileID: 1676290189711848648}
   m_Layer: 0
   m_Name: ReputationView
   m_TagString: Untagged
@@ -58,6 +59,7 @@ MonoBehaviour:
   - {fileID: 1450821330, guid: 33232e397e42149dfac134fd315a0812, type: 3}
   - {fileID: -1026376891, guid: 33232e397e42149dfac134fd315a0812, type: 3}
   _reputationView: {fileID: 8517312493893480977}
+  _animator: {fileID: 1676290189711848648}
 --- !u!222 &9068165761519190839
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -96,3 +98,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1676290189711848648
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041334485319112106}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e06924ad8fd14d5c8077a90cc1b4989, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

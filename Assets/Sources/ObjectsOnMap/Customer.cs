@@ -94,7 +94,7 @@ public class Customer : ObjectOnMap
             updateReputation(-Order.ReputationPenalty);
         }
 
-        StartCoroutine(ReorderTimer(OrderGenerator.REORDER_TIME_SECONDS));
+        StartCoroutine(ReorderTimer(m_orderGenerator.getReorderTime()));
     }
 
     protected override void OnObjectClicked()
@@ -127,7 +127,7 @@ public class Customer : ObjectOnMap
       
         Order = null;
 
-        StartCoroutine(ReorderTimer(OrderGenerator.REORDER_TIME_SECONDS));
+        StartCoroutine(ReorderTimer(m_orderGenerator.getReorderTime()));
     }
 
     private void UpdateOrders() {
@@ -136,6 +136,7 @@ public class Customer : ObjectOnMap
 
     private void updateReputation(int value) {
         m_reputation += value;
+        m_reputation = Mathf.Clamp(m_reputation, 0, 5);
         _reputationView.UpdateReputation(m_reputation);
     }
 }

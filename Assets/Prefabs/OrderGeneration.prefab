@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff13315f1f1ceb141a2df6ccb7175ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reorderTimeSecondsMin: 10
+  _reorderTimeSecondsMax: 15
   m_orders:
   - {fileID: 11400000, guid: c77f9ad35b841084a8a714028749c4af, type: 2}
   - {fileID: 11400000, guid: f94c5c308cea59049a53e33014ee15d5, type: 2}
