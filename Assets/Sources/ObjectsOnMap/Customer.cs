@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
@@ -50,7 +51,7 @@ public class Customer : ObjectOnMap
         var order = m_orderGenerator.GetOrderData();
 
         Order = new Order(order);
-        
+
         _resourceOne.SetActive(false);
         _resourceTwo.SetActive(false);
         _resourceThree.SetActive(false);
@@ -71,7 +72,7 @@ public class Customer : ObjectOnMap
                     break;
             }
         }
-        
+
         m_timerInSeconds = order.TimeInSeconds;
 
         if (m_timerInSeconds <= 0)
@@ -113,14 +114,11 @@ public class Customer : ObjectOnMap
     {
         m_timeout = true;
 
-        if (!m_manOnRoad && Order != null)
+        if (Order != null)
         {
             updateReputation(-Order.ReputationPenalty);
-            Order = null;
-        }
-
-        if (m_manOnRoad && Order != null) {
-            updateReputation(-Order.ReputationPenalty);
+            if (!m_manOnRoad)
+                Order = null;
         }
 
         StartCoroutine(ReorderTimer(m_orderGenerator.getReorderTime()));
@@ -144,7 +142,7 @@ public class Customer : ObjectOnMap
         if (Order != null)
             UpdateOrders();
 
-        var reward = Order == null ? new List<Resource> { Order.Reward } : null;
+        var reward = Order != null ? new List<Resource> { Order.Reward } : null;
         
         mapManager.LaunchMan(this, hub, reward);
 
@@ -155,7 +153,7 @@ public class Customer : ObjectOnMap
 
             updateReputation(Order.ReputationReward);
         }
-      
+
         Order = null;
 
         StartCoroutine(ReorderTimer(m_orderGenerator.getReorderTime()));
@@ -171,7 +169,7 @@ public class Customer : ObjectOnMap
             GameCore.Instance.Get<EndGamePanel>().Show(false);
             return;
         }
-        
+
         m_reputation += value;
         m_reputation = Mathf.Clamp(m_reputation, 0, 5);
         _reputationView.UpdateReputation(m_reputation);
