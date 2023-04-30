@@ -34,6 +34,7 @@ namespace Sources.map {
 			var path = FindPath(start.MapPoint, end.MapPoint);
 
 			if (path == null) {
+				Debug.LogError("empty path");
 				return;
 			}
 			var storage = GameCore.Instance.Get<ObjectsStorage>();
@@ -50,7 +51,7 @@ namespace Sources.map {
 
 			float manSpeed = GameCore.Instance.Get<Hub>().ManSpeed * pathPositions.Count * .1f;
 			man.Resources = resources;
-			
+
 			man.transform.DOPath(pathPositions.ToArray(), manSpeed, PathType.CatmullRom, PathMode.TopDown2D)
 				.SetEase(Ease.Linear)
 				.OnComplete(()=> {
