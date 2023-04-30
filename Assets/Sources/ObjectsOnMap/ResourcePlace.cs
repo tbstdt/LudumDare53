@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class ResourcePlace : ObjectOnMap
 {
-    [SerializeField] private GameObject _view;
+    [SerializeField] protected GameObject _view;
     [SerializeField] private TextMeshProUGUI _resourceCountText;
     [SerializeField] protected Resource _resource;
 
@@ -66,7 +66,7 @@ public class ResourcePlace : ObjectOnMap
         GameCore.Instance.Get<MapManager>().LaunchMan(this, hub, new List<Resource>{new (_resource.Type, amount)});
         _menInside--;
 
-        if (_menInside == 0 && _resource.Amount == 0) {
+        if (_menInside == 0 && _resource.Amount < 0) {
             _view.SetActive(false);
         }
     }
