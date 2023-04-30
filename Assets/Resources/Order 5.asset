@@ -22,4 +22,4 @@ MonoBehaviour:
   ReputationReward: 1
   ReputationPenalty: 1
   StartOrderRequirementDeliveryCount: 0
-  EndOrderRequirementDeliveryCount: 50
+  EndOrderRequirementDeliveryCount: 8
