@@ -100,6 +100,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         _speedUpgrade = _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].ValueChange;
         _curSpeedUpgradeIndex++;
         UpdateSpeedUpgrade();
+        UpdateResource();
     }
 
     private void WeightUpgradeHandler()
@@ -108,6 +109,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
         _curWeightUpgradeIndex++;
         UpdateWeightUpgrade();
+        UpdateResource();
     }
 
     private void MenUpgradeHandler()

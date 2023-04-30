@@ -52,7 +52,7 @@ MonoBehaviour:
   _points:
   - Type: 2
     Point: {fileID: 0}
-  - Type: 0
+  - Type: 1536
     Point: {fileID: 0}
   - Type: 9
     Point: {fileID: 0}
@@ -63,5 +63,9 @@ MonoBehaviour:
   - Type: 65
     Point: {fileID: 0}
   - Type: 129
+    Point: {fileID: 0}
+  - Type: 2560
+    Point: {fileID: 0}
+  - Type: 4608
     Point: {fileID: 0}
   _container: {fileID: 0}

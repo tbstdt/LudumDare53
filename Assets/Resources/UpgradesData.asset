@@ -29,3 +29,11 @@ MonoBehaviour:
     ValueChange: 1
   - Cost: 300
     ValueChange: 1
+  - Cost: 400
+    ValueChange: 1
+  - Cost: 500
+    ValueChange: 1
+  - Cost: 600
+    ValueChange: 1
+  - Cost: 700
+    ValueChange: 1

@@ -47,8 +47,6 @@ MonoBehaviour:
   m_prefabs:
   - ObjectType: 2
     ObjectPrefab: {fileID: -1620490207741452445, guid: 9bb483e365cc04c7fa8e7f6e55967f8c, type: 3}
-  - ObjectType: 0
-    ObjectPrefab: {fileID: -378670045800067719, guid: 352c8303641094ec0a88b4e223690dbd, type: 3}
   - ObjectType: 4
     ObjectPrefab: {fileID: 7842926488575783579, guid: 4cd66582ed69148fc9d82df837fa0412, type: 3}
   - ObjectType: 9
@@ -61,4 +59,10 @@ MonoBehaviour:
     ObjectPrefab: {fileID: 5075960981852718256, guid: ddc7335e2ee7d4199bfef409add1dba7, type: 3}
   - ObjectType: 129
     ObjectPrefab: {fileID: 5075960981852718256, guid: 148e5d78671854deca7b594758a99b97, type: 3}
+  - ObjectType: 1536
+    ObjectPrefab: {fileID: -378670045800067719, guid: eecc41e0359bfc44b9da5b6516706556, type: 3}
+  - ObjectType: 2560
+    ObjectPrefab: {fileID: -378670045800067719, guid: c6f5cde9bb7483f409ad90aa7b827de3, type: 3}
+  - ObjectType: 4608
+    ObjectPrefab: {fileID: -378670045800067719, guid: 9577422eea73dba4f8e2b20e207d6bed, type: 3}
   _poolContainer: {fileID: 0}
