@@ -19,4 +19,5 @@ public enum ObjectType : int
     One = 2 << 9,
     Two = 2 << 10,
     Three = 2 << 11,
+    Random = 2 << 12,
 }

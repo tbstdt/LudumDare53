@@ -23,17 +23,17 @@ MonoBehaviour:
   - Cost: 200
     ValueChange: 2
   MenUpgrades:
-  - Cost: 100
+  - Cost: 150
     ValueChange: 1
-  - Cost: 200
+  - Cost: 150
     ValueChange: 1
-  - Cost: 300
+  - Cost: 150
     ValueChange: 1
-  - Cost: 400
+  - Cost: 150
     ValueChange: 1
-  - Cost: 500
+  - Cost: 150
     ValueChange: 1
-  - Cost: 600
+  - Cost: 150
     ValueChange: 1
-  - Cost: 700
+  - Cost: 150
     ValueChange: 1
