@@ -1647,54 +1647,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 545419967}
     m_Modifications:
-    - target: {fileID: 543982007, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 543982007, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 543982007, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 543982007, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1477535344, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1477535344, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1477535344, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1477535344, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060562502, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060562502, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060562502, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060562502, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1813127280477728504, guid: 7334e297528b5b944bd519d4b721d1ba, type: 3}
       propertyPath: m_Name
       value: UIPanels

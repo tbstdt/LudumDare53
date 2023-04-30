@@ -214,9 +214,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manCount: 10
+  _manSpeed: 3
   _upgradePanel: {fileID: 8073141182182238767}
   _upgradesData: {fileID: 11400000, guid: 4d25b3eefa44052409a3709dee5ee167, type: 2}
-  TimeToWork: 3
+  TimeToWork: 2
+  CurrentDeliveryCount: 0
 --- !u!1001 &1779391039234850956
 PrefabInstance:
   m_ObjectHideFlags: 0
