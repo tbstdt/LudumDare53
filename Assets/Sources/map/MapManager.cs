@@ -30,7 +30,7 @@ namespace Sources.map {
 			}
 		}
 
-		public void LaunchMan(ObjectOnMap start, ObjectOnMap end,  Resource resource) {
+		public void LaunchMan(ObjectOnMap start, ObjectOnMap end,  List<Resource> resources) {
 			var path = FindPath(start.MapPoint, end.MapPoint);
 
 			if (path == null) {
@@ -39,7 +39,7 @@ namespace Sources.map {
 			var storage = GameCore.Instance.Get<ObjectsStorage>();
 
 			var man = (Man)storage.GetObjectByType(ObjectType.Man);
-			man.Resource = resource ?? man.Resource;
+			man.Resources = resources ?? man.Resources;
 
 			man.transform.SetParent(_manContainer);
 			man.transform.position = start.transform.position;

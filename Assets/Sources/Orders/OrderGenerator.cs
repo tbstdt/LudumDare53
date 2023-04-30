@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Sources.core;
 using UnityEngine;
 
@@ -12,10 +13,18 @@ public class OrderGenerator : MonoBehaviour, ICoreRegistrable
 
    public OrderSO GetOrderData()
    {
-      return m_orders[Random.Range(0, m_orders.Count)];
+      var currentDeliveryCount = GameCore.Instance.Get<Hub>().CurrentDeliveryCount;
+
+      var orders = m_orders
+         .Where(x => currentDeliveryCount >= x.StartOrderRequirementDeliveryCount
+                     && currentDeliveryCount <= x.EndOrderRequirementDeliveryCount)
+         .ToList();
+
+      return orders[Random.Range(0, orders.Count)];
    }
 
    public int getReorderTime() {
+   
       return Random.Range(_reorderTimeSecondsMin, _reorderTimeSecondsMax + 1);
    }
 }

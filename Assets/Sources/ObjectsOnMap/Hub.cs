@@ -4,6 +4,7 @@ using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
 using Sources.map;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Hub : ObjectOnMap, ICoreRegistrable {
     [SerializeField] private int _manCount = 3;
@@ -32,6 +33,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     };
 
     public float ManSpeed => _manSpeed / _speedUpgrade;
+    public int CurrentDeliveryCount = 0;
 
     public Dictionary<ResourceType, int> Resources => m_resources;
 
@@ -137,14 +139,25 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         return false;
     }
 
-    public bool TrySendCourier(Customer customer)
-    {
-        var orderResource = customer.Order.Resource;
+        public bool TrySendCourier(Customer customer) {
+        var succesVerifyCount = 0;
+        
+        foreach (var orderResource in customer.Order.Resources) {
+            if (m_resources[orderResource.Type] >= orderResource.Amount) {
+                succesVerifyCount++;
+            }
+        }
 
-        if (m_resources[orderResource.Type] >= orderResource.Amount)
-        {
-            m_resources[orderResource.Type] -= orderResource.Amount;
-            GameCore.Instance.Get<MapManager>().LaunchMan(this, customer, customer.Order.Resource);
+        if (succesVerifyCount == customer.Order.Resources.Count) {
+            
+            foreach (var orderResource in customer.Order.Resources) {
+                if (m_resources[orderResource.Type] >= orderResource.Amount)
+                {
+                    m_resources[orderResource.Type] -= orderResource.Amount;
+                }
+            }
+            
+            GameCore.Instance.Get<MapManager>().LaunchMan(this, customer, customer.Order.Resources);
             m_availableMen--;
             UpdateResource();
             return true;
@@ -164,8 +177,10 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     public override void Job(Man man) {
         m_availableMen++;
-        if (man.Resource != null) {
-            m_resources[man.Resource.Type] += man.Resource.Amount;
+        if (man.Resources != null) {
+            foreach (var resource in man.Resources) {
+                m_resources[resource.Type] += resource.Amount;
+            }
         }
         UpdateResource();
         UpdateAllUpgradesView();
@@ -173,5 +188,10 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     private void UpdateResource() {
         GameCore.Instance.Get<UIManager>().UpdateResource(m_resources, m_availableMen, _maxMenCount);
+    }
+
+    public void UpdateOrders() {
+        CurrentDeliveryCount++;
+        GameCore.Instance.Get<UIManager>().UpdateOrders(CurrentDeliveryCount);
     }
 }

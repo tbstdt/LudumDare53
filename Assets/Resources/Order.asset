@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94f7d5e12c4d41469acebd99d2f1bdf, type: 3}
   m_Name: Order
   m_EditorClassIdentifier: 
-  Type: 0
-  Amount: 15
+  Resources:
+  - Amount: 15
+    Type: 0
   TimeInSeconds: 30
   MoneyReward: 100
   ReputationReward: 1
   ReputationPenalty: 1
+  StartOrderRequirementDeliveryCount: 0
+  EndOrderRequirementDeliveryCount: 50

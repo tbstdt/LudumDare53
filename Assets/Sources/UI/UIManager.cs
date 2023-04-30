@@ -16,8 +16,6 @@ namespace Sources.Editor.UI {
 		[SerializeField] private int _maxOrders = 50;
 		[SerializeField] private TextMeshProUGUI _orders;
 
-		private int _curOrders;
-
 		private void Start()
 		{
 			_orders.text = $"0/{_maxOrders}";
@@ -44,11 +42,11 @@ namespace Sources.Editor.UI {
 			}
 		}
 
-		public void UpdateOrders()
+		public void UpdateOrders(int currOrders)
 		{
-			_orders.text = $"{++_curOrders}/{_maxOrders}";
+			_orders.text = $"{currOrders}/{_maxOrders}";
 
-			if (_curOrders == _maxOrders) {
+			if (currOrders == _maxOrders) {
 				GameCore.Instance.Get<EndGamePanel>().Show(true);
 			}
 		}

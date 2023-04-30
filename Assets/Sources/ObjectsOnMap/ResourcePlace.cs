@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
 using Sources.map;
@@ -62,7 +63,7 @@ public class ResourcePlace : ObjectOnMap
         var amount = Mathf.RoundToInt(takenResourceAmount);
         _resource.Amount -= amount;
 
-        GameCore.Instance.Get<MapManager>().LaunchMan(this, hub, new Resource(_resource.Type, amount));
+        GameCore.Instance.Get<MapManager>().LaunchMan(this, hub, new List<Resource>{new (_resource.Type, amount)});
         _menInside--;
 
         if (_menInside == 0 && _resource.Amount == 0) {

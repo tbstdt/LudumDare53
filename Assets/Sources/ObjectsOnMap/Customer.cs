@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
@@ -10,7 +11,13 @@ using UnityEngine.UI;
 
 public class Customer : ObjectOnMap
 {
-    [SerializeField] private TextMeshProUGUI m_resourceAmountText;
+    [SerializeField] private GameObject _resourceOne;
+    [SerializeField] private GameObject _resourceTwo;
+    [SerializeField] private GameObject _resourceThree;
+    [Space]
+    [SerializeField] private TextMeshProUGUI m_resourceOneAmountText;
+    [SerializeField] private TextMeshProUGUI m_resourceTwoAmountText;
+    [SerializeField] private TextMeshProUGUI m_resourceThreeAmountText;
     [Space]
     [SerializeField] private TextMeshProUGUI m_timerTime;
     [SerializeField] private Image m_timerView;
@@ -32,6 +39,7 @@ public class Customer : ObjectOnMap
 
     private void Start()
     {
+        m_timerGO.SetActive(false);
         m_orderGenerator = GameCore.Instance.Get<OrderGenerator>();
         _reputationView.UpdateReputation(m_reputation);
         StartCoroutine(ReorderTimer(m_StartFirstQuest));
@@ -42,7 +50,28 @@ public class Customer : ObjectOnMap
         var order = m_orderGenerator.GetOrderData();
 
         Order = new Order(order);
-        m_resourceAmountText.text = order.Amount.ToString();
+        
+        _resourceOne.SetActive(false);
+        _resourceTwo.SetActive(false);
+        _resourceThree.SetActive(false);
+
+        foreach (var resource in Order.Resources) {
+            switch (resource.Type) {
+                case ResourceType.One:
+                    _resourceOne.SetActive(true);
+                    m_resourceOneAmountText.text = resource.Amount.ToString();
+                    break;
+                case ResourceType.Two:
+                    _resourceTwo.SetActive(true);
+                    m_resourceTwoAmountText.text = resource.Amount.ToString();
+                    break;
+                case ResourceType.Three:
+                    _resourceThree.SetActive(true);
+                    m_resourceThreeAmountText.text = resource.Amount.ToString();
+                    break;
+            }
+        }
+        
         m_timerInSeconds = order.TimeInSeconds;
 
         if (m_timerInSeconds <= 0)
@@ -115,7 +144,9 @@ public class Customer : ObjectOnMap
         if (Order != null)
             UpdateOrders();
 
-        mapManager.LaunchMan(this, hub, Order?.Reward);
+        var reward = Order == null ? new List<Resource> { Order.Reward } : null;
+        
+        mapManager.LaunchMan(this, hub, reward);
 
         if (!m_timeout)
         {
@@ -131,17 +162,18 @@ public class Customer : ObjectOnMap
     }
 
     private void UpdateOrders() {
-        GameCore.Instance.Get<UIManager>().UpdateOrders();
+        GameCore.Instance.Get<Hub>().UpdateOrders();
     }
 
     private void updateReputation(int value) {
-        m_reputation += value;
-        m_reputation = Mathf.Clamp(m_reputation, 0, 5);
-        _reputationView.UpdateReputation(m_reputation);
-
         if (m_reputation == 0) {
             m_timerGO.SetActive(false);
             GameCore.Instance.Get<EndGamePanel>().Show(false);
+            return;
         }
+        
+        m_reputation += value;
+        m_reputation = Mathf.Clamp(m_reputation, 0, 5);
+        _reputationView.UpdateReputation(m_reputation);
     }
 }
