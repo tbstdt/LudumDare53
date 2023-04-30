@@ -12,6 +12,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     [SerializeField] private UpgradesDataSO _upgradesData;
 
     private float _speedUpgrade = 1;
+    private float _rpsUpgrade = 1;
 
     private Dictionary<ResourceType, int> m_resources = new () {
         {ResourceType.One, 0},
@@ -24,7 +25,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     private int _maxMenCount;
     public int TimeToWork = 10;
 
-    public Dictionary<ResourceType, int> ResourcePerSecond = new () {
+    private Dictionary<ResourceType, int> m_resourcePerSecond = new () {
         {ResourceType.One, 1},
         {ResourceType.Two, 2},
         {ResourceType.Three, 3},
@@ -106,7 +107,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     private void WeightUpgradeHandler()
     {
         m_resources[ResourceType.Money] -= _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].Cost;
-
+        _rpsUpgrade = _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].ValueChange;
         _curWeightUpgradeIndex++;
         UpdateWeightUpgrade();
         UpdateResource();
@@ -123,6 +124,18 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     }
 
     #endregion
+
+    public bool TryGetResourcePerSecond(ResourceType type, out float resourcePerSecond)
+    {
+        if (m_resourcePerSecond.TryGetValue(type, out int rps))
+        {
+            resourcePerSecond = rps * _rpsUpgrade;
+            return true;
+        }
+
+        resourcePerSecond = 0;
+        return false;
+    }
 
     public bool TrySendCourier(Customer customer)
     {

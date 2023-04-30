@@ -25,11 +25,11 @@ public class ResourcePlace : ObjectOnMap
         if (_resource.Amount <= 0) {
             return;
         }
-        
+
         var hub = GameCore.Instance.Get<Hub>();
         hub.TrySendWorker(this);
     }
-    
+
     public override void Job(Man man) {
         _menInside++;
         StartCoroutine(GatherResource());
@@ -37,30 +37,32 @@ public class ResourcePlace : ObjectOnMap
 
     private IEnumerator GatherResource() {
         var hub = GameCore.Instance.Get<Hub>();
-        var takenResource = new Resource(_resource.Type);
-        if (hub.ResourcePerSecond.TryGetValue(_resource.Type, out var resourcePerSecond)) {
+        float takenResourceAmount = 0;
+        if (hub.TryGetResourcePerSecond(_resource.Type, out var resourcePerSecond)) {
             for (int i = 0; i < hub.TimeToWork; i++) {
                 if (_resource.Amount <= 0) {
                     continue;
                 }
 
-                if (_resource.Amount - resourcePerSecond >= 0) {
+                if (_resource.Amount - takenResourceAmount >= 0) {
                     yield return new WaitForSeconds(1);
-                    takenResource.Amount += resourcePerSecond;
-                    _resource.Amount -= resourcePerSecond;
+                    takenResourceAmount += resourcePerSecond;
                 }
-
-                if (_resource.Amount < resourcePerSecond) {
+                else
+                {
                     yield return new WaitForSeconds(1);
-                    takenResource.Amount += _resource.Amount;
+                    takenResourceAmount += _resource.Amount;
                     _resource.Amount = 0;
                 }
 
-                _resourceCountText.text = _resource.Amount.ToString();
+                _resourceCountText.text = (_resource.Amount - Math.Round(takenResourceAmount)).ToString();
             }
         }
 
-        GameCore.Instance.Get<MapManager>().LaunchMan(this, hub, takenResource);
+        var amount = Mathf.RoundToInt(takenResourceAmount);
+        _resource.Amount -= amount;
+
+        GameCore.Instance.Get<MapManager>().LaunchMan(this, hub, new Resource(_resource.Type, amount));
         _menInside--;
 
         if (_menInside == 0 && _resource.Amount == 0) {
