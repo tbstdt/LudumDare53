@@ -169,14 +169,13 @@ public class Customer : ObjectOnMap
     }
 
     private void updateReputation(int value) {
-        if (m_reputation == 0) {
-            m_timerGO.SetActive(false);
-            GameCore.Instance.Get<EndGamePanel>().Show(false);
-            return;
-        }
-
         m_reputation += value;
         m_reputation = Mathf.Clamp(m_reputation, 0, 5);
         _reputationView.UpdateReputation(m_reputation);
+        
+        if (m_reputation < 0) {
+            m_timerGO.SetActive(false);
+            GameCore.Instance.Get<EndGamePanel>().Show(false);
+        }
     }
 }
