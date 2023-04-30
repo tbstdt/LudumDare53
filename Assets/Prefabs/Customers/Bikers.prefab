@@ -697,6 +697,8 @@ MonoBehaviour:
   m_timerTime: {fileID: 3871486898105451959}
   m_timerView: {fileID: 5383083599044596107}
   m_timerGO: {fileID: 421744212245784404}
+  m_StartFirstQuest: 1
+  m_reputation: 3
 --- !u!1 &6416222008486396848
 GameObject:
   m_ObjectHideFlags: 0

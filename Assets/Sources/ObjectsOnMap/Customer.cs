@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Sources.core;
 using Sources.Editor.ObjectsOnMap;
+using Sources.Editor.UI;
 using Sources.map;
 using TMPro;
 using UnityEngine;
@@ -102,16 +103,14 @@ public class Customer : ObjectOnMap
 
     public override void Job(Man man) {
         m_manOnRoad = false;
+
         var mapManager = GameCore.Instance.Get<MapManager>();
-
         var hub = GameCore.Instance.Get<Hub>();
-        if (Order == null)
-        {
-            mapManager.LaunchMan(this, hub, null);
-        }
 
-        mapManager.LaunchMan(this, hub, Order.Reward);
-        Order = null;
+        if (Order != null)
+            UpdateOrders();
+
+        mapManager.LaunchMan(this, hub, Order?.Reward);
 
         if (!m_timeout)
         {
@@ -122,5 +121,9 @@ public class Customer : ObjectOnMap
         }
 
         StartCoroutine(ReorderTimer(OrderGenerator.REORDER_TIME_SECONDS));
+    }
+
+    private void UpdateOrders() {
+        GameCore.Instance.Get<UIManager>().UpdateOrders();
     }
 }

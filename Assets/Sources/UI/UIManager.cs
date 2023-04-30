@@ -11,7 +11,16 @@ namespace Sources.Editor.UI {
 		[SerializeField] private Text _resourceThree;
 		[SerializeField] private Text _resourceMoney;
 		[SerializeField] private Text _mans;
+		[Space]
+		[SerializeField] private int _maxOrders = 50;
+		[SerializeField] private Text _orders;
 
+		private int _curOrders;
+
+		private void Start()
+		{
+			_orders.text = $"0/{_maxOrders}";
+		}
 
 		public void UpdateResource(Dictionary<ResourceType, int> resources, int workersCount, int workersMax) {
 			foreach (var resource in resources) {
@@ -32,6 +41,11 @@ namespace Sources.Editor.UI {
 
 				_mans.text = $"{workersCount}/{workersMax}";
 			}
+		}
+
+		public void UpdateOrders()
+		{
+			_orders.text = $"{++_curOrders}/{_maxOrders}";
 		}
 	}
 }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Order 1
   m_EditorClassIdentifier: 
   Type: 0
-  Amount: 35
+  Amount: 15
   TimeInSeconds: 45
-  MoneyReward: 100
+  MoneyReward: 30
   ReputationReward: 1
-  ReputationPenalty: 2
+  ReputationPenalty: 1
