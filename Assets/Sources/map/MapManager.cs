@@ -39,7 +39,6 @@ namespace Sources.map {
 			var storage = GameCore.Instance.Get<ObjectsStorage>();
 
 			var man = (Man)storage.GetObjectByType(ObjectType.Man);
-			man.Resources = resources ?? man.Resources;
 
 			man.transform.SetParent(_manContainer);
 			man.transform.position = start.transform.position;
@@ -50,6 +49,8 @@ namespace Sources.map {
 			}
 
 			float manSpeed = GameCore.Instance.Get<Hub>().ManSpeed * pathPositions.Count * .1f;
+			man.Resources = resources;
+			
 			man.transform.DOPath(pathPositions.ToArray(), manSpeed, PathType.CatmullRom, PathMode.TopDown2D)
 				.SetEase(Ease.Linear)
 				.OnComplete(()=> {
