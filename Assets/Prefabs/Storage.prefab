@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716517607743505617}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -49,7 +49,16 @@ MonoBehaviour:
     ObjectPrefab: {fileID: -1620490207741452445, guid: 9bb483e365cc04c7fa8e7f6e55967f8c, type: 3}
   - ObjectType: 0
     ObjectPrefab: {fileID: -378670045800067719, guid: 352c8303641094ec0a88b4e223690dbd, type: 3}
-  - ObjectType: 3
+  - ObjectType: 4
     ObjectPrefab: {fileID: 7842926488575783579, guid: 4cd66582ed69148fc9d82df837fa0412, type: 3}
-  - ObjectType: 1
+  - ObjectType: 9
     ObjectPrefab: {fileID: 5075960981852718256, guid: 14a3bf74dab2fb447b14d968e8d082d6, type: 3}
+  - ObjectType: 33
+    ObjectPrefab: {fileID: 5075960981852718256, guid: 8a8eb920f19bb4f4b9dedf2aa5f2e57a, type: 3}
+  - ObjectType: 17
+    ObjectPrefab: {fileID: 5075960981852718256, guid: d42746195c5044743883dd32f0075077, type: 3}
+  - ObjectType: 65
+    ObjectPrefab: {fileID: 5075960981852718256, guid: ddc7335e2ee7d4199bfef409add1dba7, type: 3}
+  - ObjectType: 129
+    ObjectPrefab: {fileID: 5075960981852718256, guid: 148e5d78671854deca7b594758a99b97, type: 3}
+  _poolContainer: {fileID: 0}

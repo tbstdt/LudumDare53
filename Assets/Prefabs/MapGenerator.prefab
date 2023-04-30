@@ -54,4 +54,14 @@ MonoBehaviour:
     Point: {fileID: 0}
   - Type: 0
     Point: {fileID: 0}
+  - Type: 9
+    Point: {fileID: 0}
+  - Type: 17
+    Point: {fileID: 0}
+  - Type: 33
+    Point: {fileID: 0}
+  - Type: 65
+    Point: {fileID: 0}
+  - Type: 129
+    Point: {fileID: 0}
   _container: {fileID: 0}

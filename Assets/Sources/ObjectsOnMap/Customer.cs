@@ -18,6 +18,7 @@ public class Customer : ObjectOnMap
     [Space]
     [SerializeField] private int m_StartFirstQuest = 10;
     [SerializeField] private int m_reputation = 3;
+    [SerializeField] private ReputationView _reputationView;
 
     private OrderGenerator m_orderGenerator;
 
@@ -32,7 +33,7 @@ public class Customer : ObjectOnMap
     private void Start()
     {
         m_orderGenerator = GameCore.Instance.Get<OrderGenerator>();
-
+        _reputationView.UpdateReputation(m_reputation);
         StartCoroutine(ReorderTimer(m_StartFirstQuest));
     }
 
@@ -85,7 +86,7 @@ public class Customer : ObjectOnMap
 
         if (!m_manOnRoad && Order != null)
         {
-            m_reputation -= Order.ReputationPenalty;
+            updateReputation(-Order.ReputationPenalty);
             Order = null;
         }
 
@@ -117,7 +118,7 @@ public class Customer : ObjectOnMap
             m_timeout = true;
             m_timerGO.SetActive(false);
 
-            m_reputation += Order.ReputationReward;
+            updateReputation(Order.ReputationReward);
         }
 
         StartCoroutine(ReorderTimer(OrderGenerator.REORDER_TIME_SECONDS));
@@ -125,5 +126,10 @@ public class Customer : ObjectOnMap
 
     private void UpdateOrders() {
         GameCore.Instance.Get<UIManager>().UpdateOrders();
+    }
+
+    private void updateReputation(int value) {
+        m_reputation += value;
+        _reputationView.UpdateReputation(m_reputation);
     }
 }
