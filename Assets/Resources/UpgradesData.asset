@@ -19,9 +19,9 @@ MonoBehaviour:
     ValueChange: 2
   WeightUpgrades:
   - Cost: 100
-    ValueChange: 2
+    ValueChange: 1.5
   - Cost: 200
-    ValueChange: 4
+    ValueChange: 2
   MenUpgrades:
   - Cost: 100
     ValueChange: 1

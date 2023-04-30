@@ -1,19 +1,20 @@
 using System;
 using System.Collections.Generic;
 using Sources.core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Sources.Editor.UI {
 	public class UIManager : MonoBehaviour, ICoreRegistrable{
-		[SerializeField] private Text _resourceOne;
-		[SerializeField] private Text _resourceTwo;
-		[SerializeField] private Text _resourceThree;
-		[SerializeField] private Text _resourceMoney;
-		[SerializeField] private Text _mans;
+		[SerializeField] private TextMeshProUGUI _resourceOne;
+		[SerializeField] private TextMeshProUGUI _resourceTwo;
+		[SerializeField] private TextMeshProUGUI _resourceThree;
+		[SerializeField] private TextMeshProUGUI _resourceMoney;
+		[SerializeField] private TextMeshProUGUI _mans;
 		[Space]
 		[SerializeField] private int _maxOrders = 50;
-		[SerializeField] private Text _orders;
+		[SerializeField] private TextMeshProUGUI _orders;
 
 		private int _curOrders;
 
