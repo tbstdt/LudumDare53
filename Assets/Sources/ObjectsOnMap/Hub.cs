@@ -129,7 +129,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     private void WeightUpgradeHandler()
     {
-        if (m_resources[ResourceType.Money] >= _upgradesData.WeightUpgrades[_curSpeedUpgradeIndex].Cost) {
+        if (m_resources[ResourceType.Money] >= _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].Cost) {
             m_resources[ResourceType.Money] -= _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].Cost;
             _rpsUpgrade = _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].ValueChange;
             _curWeightUpgradeIndex++;
@@ -142,7 +142,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
 
     private void MenUpgradeHandler()
     {
-        if (m_resources[ResourceType.Money] >= _upgradesData.MenUpgrades[_curSpeedUpgradeIndex].Cost) {
+        if (m_resources[ResourceType.Money] >= _upgradesData.MenUpgrades[_curMenUpgradeIndex].Cost) {
             m_resources[ResourceType.Money] -= _upgradesData.MenUpgrades[_curMenUpgradeIndex].Cost;
             m_availableMen += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
             _maxMenCount += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
