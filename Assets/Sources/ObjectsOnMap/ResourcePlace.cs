@@ -17,8 +17,6 @@ public class ResourcePlace : ObjectOnMap
 
     private bool m_changeAmountByTutorial;
 
-    public override ObjectType Type => ObjectType.Resource;
-
     public Resource Resource => _resource;
 
     private void Start() {

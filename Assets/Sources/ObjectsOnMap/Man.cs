@@ -18,8 +18,6 @@ namespace Sources.Editor.ObjectsOnMap {
 		private List<Resource> _resources;
 
 
-		public override ObjectType Type => ObjectType.Man;
-
 		public List<Resource> Resources {
 			get => _resources;
 			set {
