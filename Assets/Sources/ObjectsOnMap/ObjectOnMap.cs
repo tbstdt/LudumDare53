@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 public abstract class ObjectOnMap : MonoBehaviour, IPointerClickHandler
 {
-    public Transform PointForArrow;
-    public abstract ObjectType Type { get; }
+    public Transform PointForArrow;   
+    public ObjectType Type { get; set; }
     public GameObject MapPoint { get; private set; }
 
     protected abstract void OnObjectClicked();

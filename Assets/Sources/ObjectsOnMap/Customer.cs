@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Sources.core;
+using Sources.Editor;
 using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
 using Sources.map;
@@ -38,8 +39,6 @@ public class Customer : ObjectOnMap
     private bool m_manOnRoad;
 
     public Order Order { get; private set; }
-
-    public override ObjectType Type => ObjectType.Customer;
 
     public Action OnOrderComplete;
 
@@ -174,12 +173,41 @@ public class Customer : ObjectOnMap
             m_timeout = true;
             m_timerGO.SetActive(false);
 
+            playSound(SoundType.Positive);
             updateReputation(Order.ReputationReward);
+        }
+        else {
+            playSound(SoundType.Neutral);
         }
 
         Order = null;
 
         StartCoroutine(ReorderTimer(m_orderGenerator.getReorderTime()));
+    }
+
+    public void playSound(SoundType type) {
+        var soundManager = GameCore.Instance.Get<SoundManager>();
+        
+        if (Type.HasFlag(ObjectType.Aliens)) {
+            soundManager.PlaySound(SoundType.Alien | type);
+            return;
+        }
+        if (Type.HasFlag(ObjectType.Bikers)) {
+            soundManager.PlaySound(SoundType.Biker | type);
+            return;
+        }
+        if (Type.HasFlag(ObjectType.Cowboy)) {
+            soundManager.PlaySound(SoundType.Cowboy | type);
+            return;
+        }
+        if (Type.HasFlag(ObjectType.Robot)) {
+            soundManager.PlaySound(SoundType.Robot | type);
+            return;
+        }
+        if (Type.HasFlag(ObjectType.Vault)) {
+            soundManager.PlaySound(SoundType.Mutant | type);
+        }
+        
     }
 
     public void ShowTutorialOrder(OrderSO order)

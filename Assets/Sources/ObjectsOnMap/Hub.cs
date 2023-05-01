@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Sources.core;
+using Sources.Editor;
 using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
 using Sources.map;
@@ -39,8 +40,6 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     public int CurrentDeliveryCount = 0;
 
     public Dictionary<ResourceType, int> Resources => m_resources;
-
-    public override ObjectType Type => ObjectType.Hub;
 
     private void Start()
     {
@@ -198,6 +197,8 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
                 GameCore.Instance.Get<MapManager>().LaunchMan(this, customer, customer.Order.Resources);
                 m_availableMen--;
                 UpdateResource();
+                
+                GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_Enough);
                 return true;
             }
         }
@@ -215,8 +216,11 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             GameCore.Instance.Get<MapManager>().LaunchMan(this, resPlace, null);
             m_availableMen--;
             UpdateResource();
+            GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_Enough);
             return true;
         }
+        
+        GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_NotEnough);
         return false;
     }
 
@@ -228,6 +232,8 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             }
             _resourceBalloon.Show(man.Resources);
         }
+        
+        GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_Positive);
 
         UpdateResource();
         UpdateAllUpgradesView();

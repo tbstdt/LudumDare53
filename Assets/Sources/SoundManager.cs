@@ -18,7 +18,7 @@ namespace Sources.Editor {
 				_soundTypes.Add(sound.Type, sound.clip);
 			}
 
-			if (_soundTypes.TryGetValue(SoundType.music, out AudioClip clip)) {
+			if (_soundTypes.TryGetValue(SoundType.Music, out AudioClip clip)) {
 				_music.clip = clip;
 				_music.Play();
 			}
@@ -36,9 +36,24 @@ namespace Sources.Editor {
 		public SoundType Type;
 		public AudioClip clip;
 	}
-	
+
+	[Flags]
 	public enum SoundType {
-		one,
-		music,
+		Music = 0,
+		FX_Enough = 1,
+		FX_Positive = 1 << 1,
+		FX_NotEnough = 1 << 2,
+		FX_Fail = 1 << 3,
+		FX_Neutral = 1 << 4,
+		
+		Alien = 1 << 5,
+		Mutant = 1 << 6,
+		Robot = 1 << 7,
+		Biker = 1 << 8,
+		Cowboy = 1 << 9,
+		
+		Neutral = 1 << 10,
+		Negative = 1 << 11,
+		Positive = 1 << 12,
 	}
 }

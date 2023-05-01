@@ -15,6 +15,7 @@ namespace Sources.map {
 		private void SetObject(out ObjectOnMap objectOnMap, ObjectType type, GameObject point)
 		{
 			objectOnMap = _objectStorage.GetObjectByType(type);
+			objectOnMap.Type = type;
 			objectOnMap.transform.SetParent(_container);
 			objectOnMap.transform.position = point.transform.position;
 			objectOnMap.AddMapPoint(point);
