@@ -21,6 +21,8 @@ public class ResourcePlace : ObjectOnMap
 
     public Resource Resource => _resource;
 
+    public Action<ResourcePlace> OnResourceTaken;
+
     private void Start() {
         _resourceCountText.text = _resource.Amount.ToString();
     }
@@ -77,6 +79,7 @@ public class ResourcePlace : ObjectOnMap
 
         GameCore.Instance.Get<MapManager>().LaunchMan(this, hub, new List<Resource>{new (_resource.Type, amount)});
         _menInside--;
+        OnResourceTaken?.Invoke(this);
 
         if (_menInside == 0 && _resource.Amount < 0 && !m_changeAmountByTutorial)
             _view.SetActive(false);

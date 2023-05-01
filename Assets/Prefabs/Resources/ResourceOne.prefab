@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bbb468f87e5b04abc1f13d96f0318e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointForArrow: {fileID: 7208142261210014352}
   _view: {fileID: 3294774567989725212}
   _resourceCountText: {fileID: 1552909216773094915}
   _resource:

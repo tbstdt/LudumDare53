@@ -10,6 +10,7 @@ namespace Sources
     {
         [SerializeField] private OrderSO m_startOrder;
         [SerializeField] private int m_manCountAfterTutorial = 2;
+        [SerializeField] private GameObject m_arrow;
 
         private Dictionary<ResourcePlace, int> m_defaultAmount = new();
         private List<Customer> m_customers = new();
@@ -26,7 +27,13 @@ namespace Sources
                 var newAmount = 0;
                 var resData = m_startOrder.Resources.Where(r => r.Type == place.Resource.Type).ToList();
                 if (resData.Count > 0)
+                {
                     newAmount = resData.First().Amount;
+
+                    m_arrow.gameObject.SetActive(true);
+                    m_arrow.transform.position = place.PointForArrow.position;
+                    place.OnResourceTaken = OnResourceTakenHandler;
+                }
 
                 place.ChangeAmount(newAmount, true);
             }
@@ -43,6 +50,12 @@ namespace Sources
                     }
                 }
             }
+        }
+
+        private void OnResourceTakenHandler(ResourcePlace place)
+        {
+            place.OnResourceTaken = null;
+            m_arrow.transform.position = m_customerForOrder.PointForArrow.position;
         }
 
         private void StartTutorial()
@@ -62,6 +75,7 @@ namespace Sources
             m_customerForOrder = null;
             m_defaultAmount.Clear();
             m_customers.Clear();
+            m_arrow.gameObject.SetActive(false);
         }
 
         public void Init()
