@@ -42,6 +42,7 @@ public class Customer : ObjectOnMap
     public Order Order { get; private set; }
 
     public Action OnOrderComplete;
+    public Action OnManSend;
 
     private void Start()
     {
@@ -141,6 +142,8 @@ public class Customer : ObjectOnMap
 
         var hub = GameCore.Instance.Get<Hub>();
         m_manOnRoad = hub.TrySendCourier(this);
+        if(m_manOnRoad)
+            OnManSend?.Invoke();
     }
 
     private void UpdateOrders() {
