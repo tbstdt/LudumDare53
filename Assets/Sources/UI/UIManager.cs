@@ -23,8 +23,6 @@ namespace Sources.Editor.UI {
 		[SerializeField] private Image m_imageMoney;
 		[SerializeField] private Image m_imageMan;
 
-		private readonly string m_triggerName = "showRed";
-
 		public int MaxOrders => _maxOrders;
 
 		private void Start()
