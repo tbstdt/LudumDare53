@@ -32,7 +32,7 @@ namespace Sources
 
                     m_arrow.gameObject.SetActive(true);
                     m_arrow.transform.position = place.PointForArrow.position;
-                    place.OnResourceTaken = OnResourceTakenHandler;
+                    place.OnManSend = OnResourceTakenHandler;
                 }
 
                 place.ChangeAmount(newAmount, true);
@@ -54,8 +54,17 @@ namespace Sources
 
         private void OnResourceTakenHandler(ResourcePlace place)
         {
-            place.OnResourceTaken = null;
+            place.OnManSend = null;
+            m_arrow.gameObject.SetActive(false);
+            GameCore.Instance.Get<Hub>().OnManArrived = ShowCustomerArrow;
+        }
+
+        private void ShowCustomerArrow()
+        {
+            GameCore.Instance.Get<Hub>().OnManArrived = null;
+            m_arrow.gameObject.SetActive(true);
             m_arrow.transform.position = m_customerForOrder.PointForArrow.position;
+            m_customerForOrder.OnManSend = () => m_arrow.gameObject.SetActive(false);
         }
 
         private void StartTutorial()
@@ -72,10 +81,10 @@ namespace Sources
             GameCore.Instance.Get<Hub>().SetManCount(m_manCountAfterTutorial);
 
             m_customerForOrder.OnOrderComplete = null;
+            m_customerForOrder.OnManSend = null;
             m_customerForOrder = null;
             m_defaultAmount.Clear();
             m_customers.Clear();
-            m_arrow.gameObject.SetActive(false);
         }
 
         public void Init()
