@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sources.core;
 using TMPro;
 using UnityEngine;
@@ -16,11 +17,11 @@ namespace Sources.Editor.UI {
 		[SerializeField] private int _maxOrders = 50;
 		[SerializeField] private TextMeshProUGUI _orders;
 		[Space]
-		[SerializeField] private Animator m_animatorOne;
-		[SerializeField] private Animator m_animatorTwo;
-		[SerializeField] private Animator m_animatorThree;
-		[SerializeField] private Animator m_animatorMoney;
-		[SerializeField] private Animator m_animatorMan;
+		[SerializeField] private Image m_imageOne;
+		[SerializeField] private Image m_imageTwo;
+		[SerializeField] private Image m_imageThree;
+		[SerializeField] private Image m_imageMoney;
+		[SerializeField] private Image m_imageMan;
 
 		private readonly string m_triggerName = "showRed";
 
@@ -31,25 +32,28 @@ namespace Sources.Editor.UI {
 
 		public void ShowRedMan()
 		{
-			m_animatorMan.SetTrigger(m_triggerName);
+			RedAnim(m_imageMan);
 		}
 
-		public void ShowRedResource(ResourceType type)
-		{
-			switch (type) {
-				case ResourceType.One:
-					m_animatorOne.SetTrigger(m_triggerName);
-					break;
-				case ResourceType.Two:
-					m_animatorTwo.SetTrigger(m_triggerName);
-					break;
-				case ResourceType.Three:
-					m_animatorThree.SetTrigger(m_triggerName);
-					break;
-				case ResourceType.Money:
-					m_animatorMoney.SetTrigger(m_triggerName);
-					break;
-			}
+		public void ShowRedResource(ResourceType type) {
+			RedAnim(GetImage(type));
+		}
+
+		private void RedAnim(Image image) {
+			GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_NotEnough);
+			image.DOKill();
+			image.color = Color.white;
+			image.DOColor(Color.red, 0.2f).OnComplete(()=>image.DOColor(Color.white, 0.2f).SetDelay(0.3f));
+		}
+
+		private Image GetImage(ResourceType type) {
+			return type switch {
+				ResourceType.One => m_imageOne,
+				ResourceType.Two => m_imageTwo,
+				ResourceType.Three => m_imageThree,
+				ResourceType.Money => m_imageMoney,
+				_ => null
+			};
 		}
 
 		public void UpdateResource(Dictionary<ResourceType, int> resources, int workersCount, int workersMax) {

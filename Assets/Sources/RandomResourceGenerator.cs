@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sources.core;
 using Sources.map;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Sources
 {
@@ -17,12 +19,14 @@ namespace Sources
 
         private void Start()
         {
-            return;
-
             m_availablePoints = new List<GameObject>(m_mapPoints);
             m_usedPoint = new Dictionary<ObjectOnMap, GameObject>();
 
             GameCore.Instance.Register<RandomResourceGenerator>(this);
+        }
+
+        public void StartSpawns()
+        {
             StartCoroutine(SpawnPoint());
         }
 

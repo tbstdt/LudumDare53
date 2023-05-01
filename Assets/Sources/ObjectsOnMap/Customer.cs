@@ -27,7 +27,7 @@ public class Customer : ObjectOnMap
     [SerializeField] private GameObject m_timerGO;
     [SerializeField] private TextMeshProUGUI m_costAmountText;
     [Space]
-    [SerializeField] private int m_StartFirstQuest = 10;
+    [SerializeField] private int m_StartFirstQuest;
     [SerializeField] private int m_reputation = 3;
     [SerializeField] private ReputationView _reputationView;
     [SerializeField] private ResourceBalloon _resourceBalloon;
@@ -37,10 +37,12 @@ public class Customer : ObjectOnMap
     private int m_timerInSeconds;
     private bool m_timeout;
     private bool m_manOnRoad;
+    private bool m_fromTutorial;
 
     public Order Order { get; private set; }
 
     public Action OnOrderComplete;
+    public Action OnManSend;
 
     private void Start()
     {
@@ -123,7 +125,14 @@ public class Customer : ObjectOnMap
                 Order = null;
         }
 
-        StartCoroutine(ReorderTimer(m_orderGenerator.getReorderTime()));
+        StartReorderTimer(m_fromTutorial);
+        m_fromTutorial = false;
+    }
+
+    private void StartReorderTimer(bool fromTutorial)
+    {
+        int time = fromTutorial ? m_StartFirstQuest : m_orderGenerator.getReorderTime();
+        StartCoroutine(ReorderTimer(time));
     }
 
     protected override void OnObjectClicked()
@@ -133,6 +142,8 @@ public class Customer : ObjectOnMap
 
         var hub = GameCore.Instance.Get<Hub>();
         m_manOnRoad = hub.TrySendCourier(this);
+        if(m_manOnRoad)
+            OnManSend?.Invoke();
     }
 
     private void UpdateOrders() {
@@ -182,12 +193,12 @@ public class Customer : ObjectOnMap
 
         Order = null;
 
-        StartCoroutine(ReorderTimer(m_orderGenerator.getReorderTime()));
+        StartReorderTimer(false);
     }
 
     public void playSound(SoundType type) {
         var soundManager = GameCore.Instance.Get<SoundManager>();
-        
+
         if (Type.HasFlag(ObjectType.Aliens)) {
             soundManager.PlaySound(SoundType.Alien | type);
             return;
@@ -207,16 +218,18 @@ public class Customer : ObjectOnMap
         if (Type.HasFlag(ObjectType.Vault)) {
             soundManager.PlaySound(SoundType.Mutant | type);
         }
-        
+
     }
 
     public void ShowTutorialOrder(OrderSO order)
     {
         StartOrder(order);
+        m_fromTutorial = true;
     }
 
     public void StartFirstOrders()
     {
-        StartCoroutine(ReorderTimer(m_StartFirstQuest));
+        if (!m_fromTutorial)
+            StartReorderTimer(true);
     }
 }
