@@ -220,7 +220,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             return true;
         }
         
-        GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_NotEnough);
+        GameCore.Instance.Get<UIManager>().ShowRedMan();
         return false;
     }
 
