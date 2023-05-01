@@ -8,6 +8,7 @@ using Sources.Editor.UI;
 using Sources.map;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Customer : ObjectOnMap
@@ -29,6 +30,8 @@ public class Customer : ObjectOnMap
     [SerializeField] private int m_reputation = 3;
     [SerializeField] private ReputationView _reputationView;
     [SerializeField] private ResourceBalloon _resourceBalloon;
+    [SerializeField] private List<Image> _graphic;
+    [SerializeField] private float _scaleOnPMouse = 1.2f;
 
     private OrderGenerator m_orderGenerator;
 
@@ -192,6 +195,20 @@ public class Customer : ObjectOnMap
         Order = null;
 
         StartReorderTimer(false);
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData) {
+        foreach (var image in _graphic) {
+            image.color = Color.cyan;
+            image.transform.localScale = new Vector3(_scaleOnPMouse, _scaleOnPMouse, _scaleOnPMouse);
+        }
+    }
+
+    public override void OnPointerExit(PointerEventData eventData) {
+        foreach (var image in _graphic) {
+            image.color = Color.white;
+            image.transform.localScale =  Vector3.one;
+        }
     }
 
     public void playSound(SoundType type) {

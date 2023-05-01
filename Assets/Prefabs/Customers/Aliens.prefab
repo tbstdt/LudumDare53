@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 55325201561582063}
   - component: {fileID: 896548538703671955}
   - component: {fileID: 8168419896318683739}
+  - component: {fileID: 878866544883116750}
   m_Layer: 0
   m_Name: Image (1)
   m_TagString: Untagged
@@ -290,6 +291,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &878866544883116750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2931234026713732766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4241033944016005588
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +459,12 @@ MonoBehaviour:
   m_reputation: 3
   _reputationView: {fileID: 8615958689422029658}
   _resourceBalloon: {fileID: 4583000045786050305}
+  _graphic:
+  - {fileID: 910252828224436888}
+  - {fileID: 4002140033396719912}
+  - {fileID: 3471584422556154937}
+  - {fileID: 8168419896318683739}
+  _scaleOnPMouse: 1.3
 --- !u!1001 &396970845876041892
 PrefabInstance:
   m_ObjectHideFlags: 0

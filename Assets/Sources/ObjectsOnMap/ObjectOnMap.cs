@@ -2,7 +2,7 @@ using Sources.Editor.ObjectsOnMap;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class ObjectOnMap : MonoBehaviour, IPointerClickHandler
+public abstract class ObjectOnMap : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Transform PointForArrow;   
     public ObjectType Type { get; set; }
@@ -17,4 +17,6 @@ public abstract class ObjectOnMap : MonoBehaviour, IPointerClickHandler
     }
 
     public virtual void Job(Man man) { }
+    public abstract void OnPointerEnter(PointerEventData eventData);
+    public abstract void OnPointerExit(PointerEventData eventData);
 }

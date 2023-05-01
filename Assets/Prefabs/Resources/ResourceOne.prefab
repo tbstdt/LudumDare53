@@ -114,6 +114,9 @@ MonoBehaviour:
   _resource:
     Amount: 10000
     Type: 0
+  _graphic:
+  - {fileID: 1082239271543038796}
+  _scaleOnPMouse: 1.2
 --- !u!1 &7203577452728663157
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +220,7 @@ RectTransform:
   m_GameObject: {fileID: 7356106805113229694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5986717549772487791}
@@ -226,7 +229,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 212, y: 72}
+  m_SizeDelta: {x: 235.79, y: 105.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6090013028083857690
 CanvasRenderer:

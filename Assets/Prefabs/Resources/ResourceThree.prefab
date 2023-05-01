@@ -114,6 +114,9 @@ MonoBehaviour:
   _resource:
     Amount: 10000
     Type: 2
+  _graphic:
+  - {fileID: 1082239271543038796}
+  _scaleOnPMouse: 1.2
 --- !u!1 &7203577452728663157
 GameObject:
   m_ObjectHideFlags: 0

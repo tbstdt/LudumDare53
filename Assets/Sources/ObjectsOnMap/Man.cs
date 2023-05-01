@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Sources.Editor.ObjectsOnMap {
 	public class Man : ObjectOnMap {
@@ -64,5 +65,10 @@ namespace Sources.Editor.ObjectsOnMap {
 		}
 		
 		protected override void OnObjectClicked() { }
+		public override void OnPointerEnter(PointerEventData eventData) {
+		}
+
+		public override void OnPointerExit(PointerEventData eventData) {
+		}
 	}
 }

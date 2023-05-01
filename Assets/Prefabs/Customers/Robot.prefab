@@ -289,6 +289,8 @@ MonoBehaviour:
   m_reputation: 3
   _reputationView: {fileID: 6703885064518669321}
   _resourceBalloon: {fileID: 7011312963433552330}
+  _graphic:
+  - {fileID: 3471584422556154937}
 --- !u!1001 &422633594952780361
 PrefabInstance:
   m_ObjectHideFlags: 0

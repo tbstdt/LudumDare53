@@ -367,6 +367,10 @@ MonoBehaviour:
   m_reputation: 3
   _reputationView: {fileID: 3425846504168572110}
   _resourceBalloon: {fileID: 4492602385765094135}
+  _graphic:
+  - {fileID: 3471584422556154937}
+  - {fileID: 8809952737699052470}
+  - {fileID: 9174383150993773571}
 --- !u!1 &6416222008486396848
 GameObject:
   m_ObjectHideFlags: 0

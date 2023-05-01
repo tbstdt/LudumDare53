@@ -6,12 +6,17 @@ using Sources.Editor.ObjectsOnMap;
 using Sources.map;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ResourcePlace : ObjectOnMap
 {
     [SerializeField] protected GameObject _view;
     [SerializeField] private TextMeshProUGUI _resourceCountText;
     [SerializeField] protected Resource _resource;
+    
+    [SerializeField] private List<Image> _graphic;
+    [SerializeField] private float _scaleOnPMouse = 1.2f;
 
     private int _menInside = 0;
 
@@ -46,6 +51,20 @@ public class ResourcePlace : ObjectOnMap
     public override void Job(Man man) {
         _menInside++;
         StartCoroutine(GatherResource());
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData) {
+        foreach (var image in _graphic) {
+            image.color = Color.cyan;
+            image.transform.localScale = new Vector3(_scaleOnPMouse, _scaleOnPMouse, _scaleOnPMouse);
+        }
+    }
+
+    public override void OnPointerExit(PointerEventData eventData) {
+        foreach (var image in _graphic) {
+            image.color = Color.white;
+            image.transform.localScale = Vector3.one;
+        }
     }
 
     private IEnumerator GatherResource() {

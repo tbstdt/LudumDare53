@@ -6,6 +6,7 @@ using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
 using Sources.map;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Hub : ObjectOnMap, ICoreRegistrable {
@@ -248,6 +249,14 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         UpdateResource();
         UpdateAllUpgradesView();
         OnManArrived?.Invoke();
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData) {
+       
+    }
+
+    public override void OnPointerExit(PointerEventData eventData) {
+       
     }
 
     private void UpdateResource() {
