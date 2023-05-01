@@ -170,13 +170,20 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
         return false;
     }
 
-    public bool TrySendCourier(Customer customer) {
+    public bool TrySendCourier(Customer customer)
+    {
+        var uiManager = GameCore.Instance.Get<UIManager>();
+
         if (m_availableMen > 0) {
             var succesVerifyCount = 0;
 
             foreach (var orderResource in customer.Order.Resources) {
                 if (m_resources[orderResource.Type] >= orderResource.Amount) {
                     succesVerifyCount++;
+                }
+                else
+                {
+                    uiManager.ShowRedResource(orderResource.Type);
                 }
             }
 
@@ -193,6 +200,10 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
                 UpdateResource();
                 return true;
             }
+        }
+        else
+        {
+            uiManager.ShowRedMan();
         }
 
         return false;
