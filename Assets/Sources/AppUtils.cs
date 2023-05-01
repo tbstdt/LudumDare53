@@ -15,10 +15,10 @@ namespace Sources.Editor
 #endif
         }
 
-        public static void Restart()
-        {
-            GameCore.Instance.Dispode();
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
-        }
-    }
+		public static void Restart() {
+			Time.timeScale = 1;
+			GameCore.Instance.Dispode();
+			SceneManager.LoadScene(0, LoadSceneMode.Single);
+		}
+	}
 }

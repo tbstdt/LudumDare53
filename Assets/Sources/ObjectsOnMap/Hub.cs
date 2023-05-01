@@ -179,6 +179,10 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
     {
         var uiManager = GameCore.Instance.Get<UIManager>();
 
+        if (customer == null || customer.Order?.Resources == null) {
+            return false;
+        }
+        
         if (m_availableMen > 0) {
             var succesVerifyCount = 0;
 

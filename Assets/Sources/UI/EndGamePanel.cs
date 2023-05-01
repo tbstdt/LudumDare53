@@ -23,6 +23,8 @@ namespace Sources.Editor.UI {
 			_endGameText.text += $"{Environment.NewLine}{GameCore.Instance.Get<Hub>().CurrentDeliveryCount}/{GameCore.Instance.Get<UIManager>().MaxOrders} deliveries!";
 			
 			GameCore.Instance.Get<SoundManager>().PlaySound(gameResult ? SoundType.FX_Win : SoundType.FX_Fail);
+			GameCore.Instance.Get<SoundManager>().StopMusic();
+			Time.timeScale = 0;
 		}
 
 		public void Init() {

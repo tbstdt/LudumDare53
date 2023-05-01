@@ -24,6 +24,10 @@ namespace Sources.Editor {
 			}
 		}
 
+		public void StopMusic() {
+			_music.Stop();
+		}
+
 		public void PlaySound(SoundType type) {
 			if (_soundTypes.TryGetValue(type, out var clip)) {
 				_sound.PlayOneShot(clip);
