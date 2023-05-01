@@ -120,7 +120,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             m_resources[ResourceType.Money] -= _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].Cost;
             _speedUpgrade = _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].ValueChange;
             _curSpeedUpgradeIndex++;
-            GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.Positive);
+            GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_Positive);
         }
 
         UpdateAllUpgradesView();
@@ -133,7 +133,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             m_resources[ResourceType.Money] -= _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].Cost;
             _rpsUpgrade = _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].ValueChange;
             _curWeightUpgradeIndex++;
-            GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.Positive);
+            GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_Positive);
         }
 
         UpdateAllUpgradesView();
@@ -147,7 +147,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             m_availableMen += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
             _maxMenCount += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
             _curMenUpgradeIndex++;
-            GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.Positive);
+            GameCore.Instance.Get<SoundManager>().PlaySound(SoundType.FX_Positive);
         }
 
         UpdateAllUpgradesView();
