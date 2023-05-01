@@ -868,6 +868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279cc41e8adf7bd4ba67b37f15553db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointForArrow: {fileID: 3734599020322277039}
   _resourceOne: {fileID: 559949182490330327}
   _resourceTwo: {fileID: 5641918435196877936}
   _resourceThree: {fileID: 1953297727039060684}
@@ -1544,6 +1545,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &3734599020322277039 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7181844978932859302, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
+  m_PrefabInstance: {fileID: 5798665929212790537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3873313618826216423 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7329671917457261806, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
