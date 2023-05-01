@@ -20,6 +20,7 @@ namespace Sources.Editor.UI {
 			
 			gameObject.SetActive(true);
 			_endGameText.text = gameResult ? "Delivery master!" : "Delivery disaster!";
+			_endGameText.text += $"{Environment.NewLine}{GameCore.Instance.Get<Hub>().CurrentDeliveryCount}/{GameCore.Instance.Get<UIManager>().MaxOrders} deliveries!";
 			
 			GameCore.Instance.Get<SoundManager>().PlaySound(gameResult ? SoundType.FX_Win : SoundType.FX_Fail);
 		}

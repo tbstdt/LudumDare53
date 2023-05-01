@@ -25,6 +25,8 @@ namespace Sources.Editor.UI {
 
 		private readonly string m_triggerName = "showRed";
 
+		public int MaxOrders => _maxOrders;
+
 		private void Start()
 		{
 			_orders.text = $"0/{_maxOrders}";
