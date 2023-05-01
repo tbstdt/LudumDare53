@@ -15,7 +15,11 @@ public class ResourcePlace : ObjectOnMap
 
     private int _menInside = 0;
 
+    private bool m_changeAmountByTutorial;
+
     public override ObjectType Type => ObjectType.Resource;
+
+    public Resource Resource => _resource;
 
     private void Start() {
         _resourceCountText.text = _resource.Amount.ToString();
@@ -31,6 +35,13 @@ public class ResourcePlace : ObjectOnMap
         hub.TrySendWorker(this);
     }
 
+    public void ChangeAmount(int amount, bool byTutorial = false)
+    {
+        _resource.Amount = amount;
+        m_changeAmountByTutorial = byTutorial;
+        _resourceCountText.text = _resource.Amount.ToString();
+    }
+
     public override void Job(Man man) {
         _menInside++;
         StartCoroutine(GatherResource());
@@ -39,19 +50,20 @@ public class ResourcePlace : ObjectOnMap
     private IEnumerator GatherResource() {
         var hub = GameCore.Instance.Get<Hub>();
         float takenResourceAmount = 0;
+
         if (hub.TryGetResourcePerSecond(_resource.Type, out var resourcePerSecond)) {
             for (int i = 0; i < hub.TimeToWork; i++) {
+
                 if (_resource.Amount <= 0) {
                     continue;
                 }
 
+                yield return new WaitForSeconds(1);
                 if (_resource.Amount - takenResourceAmount >= 0) {
-                    yield return new WaitForSeconds(1);
                     takenResourceAmount += resourcePerSecond;
                 }
                 else
                 {
-                    yield return new WaitForSeconds(1);
                     takenResourceAmount += _resource.Amount;
                     _resource.Amount = 0;
                 }
@@ -66,8 +78,7 @@ public class ResourcePlace : ObjectOnMap
         GameCore.Instance.Get<MapManager>().LaunchMan(this, hub, new List<Resource>{new (_resource.Type, amount)});
         _menInside--;
 
-        if (_menInside == 0 && _resource.Amount < 0) {
+        if (_menInside == 0 && _resource.Amount < 0 && !m_changeAmountByTutorial)
             _view.SetActive(false);
-        }
     }
 }

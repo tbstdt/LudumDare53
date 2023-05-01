@@ -41,18 +41,16 @@ public class Customer : ObjectOnMap
 
     public override ObjectType Type => ObjectType.Customer;
 
+    public Action OnOrderComplete;
+
     private void Start()
     {
-        m_timerGO.SetActive(false);
         m_orderGenerator = GameCore.Instance.Get<OrderGenerator>();
         _reputationView.UpdateReputation(m_reputation);
-        StartCoroutine(ReorderTimer(m_StartFirstQuest));
     }
 
-    private void StartOrder()
+    private void StartOrder(OrderSO order)
     {
-        var order = m_orderGenerator.GetOrderData();
-
         Order = new Order(order);
         m_costAmountText.text = order.MoneyReward.ToString();
 
@@ -91,7 +89,7 @@ public class Customer : ObjectOnMap
     private IEnumerator ReorderTimer(int time)
     {
         yield return new WaitForSeconds(time);
-        StartOrder();
+        StartOrder(m_orderGenerator.GetOrderData());
     }
 
     private IEnumerator StartTimer()
@@ -138,6 +136,22 @@ public class Customer : ObjectOnMap
         m_manOnRoad = hub.TrySendCourier(this);
     }
 
+    private void UpdateOrders() {
+        GameCore.Instance.Get<Hub>().UpdateOrders();
+    }
+
+    private void updateReputation(int value) {
+        m_reputation += value;
+        m_reputation = Mathf.Clamp(m_reputation, -1, 4);
+        _reputationView.UpdateReputation(m_reputation);
+
+        if (m_reputation < 0) {
+            m_timerGO.SetActive(false);
+            Debug.Log($"You lose because reputation is {m_reputation} in {gameObject.scene.path}");
+            GameCore.Instance.Get<EndGamePanel>().Show(false);
+        }
+    }
+
     public override void Job(Man man) {
         m_manOnRoad = false;
 
@@ -145,7 +159,10 @@ public class Customer : ObjectOnMap
         var hub = GameCore.Instance.Get<Hub>();
 
         if (Order != null)
+        {
             UpdateOrders();
+            OnOrderComplete?.Invoke();
+        }
 
         var reward = Order != null ? new List<Resource> { Order.Reward } : null;
         _resourceBalloon.Show(man.Resources);
@@ -165,19 +182,13 @@ public class Customer : ObjectOnMap
         StartCoroutine(ReorderTimer(m_orderGenerator.getReorderTime()));
     }
 
-    private void UpdateOrders() {
-        GameCore.Instance.Get<Hub>().UpdateOrders();
+    public void ShowTutorialOrder(OrderSO order)
+    {
+        StartOrder(order);
     }
 
-    private void updateReputation(int value) {
-        m_reputation += value;
-        m_reputation = Mathf.Clamp(m_reputation, -1, 4);
-        _reputationView.UpdateReputation(m_reputation);
-        
-        if (m_reputation < 0) {
-            m_timerGO.SetActive(false);
-            Debug.Log($"You lose because reputation is {m_reputation} in {gameObject.scene.path}");
-            GameCore.Instance.Get<EndGamePanel>().Show(false);
-        }
+    public void StartFirstOrders()
+    {
+        StartCoroutine(ReorderTimer(m_StartFirstQuest));
     }
 }

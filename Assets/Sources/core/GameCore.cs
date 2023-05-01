@@ -13,12 +13,14 @@ namespace Sources.core
 		[SerializeField] private UIManager _uiManager;
 		[SerializeField] private SoundManager _soundManager;
 		[SerializeField] private EndGamePanel _endGamePanel;
+		[SerializeField] private TutorialController _tutorialController;
 
 		private static CoreManagerProvider _coreManagerProvider;
 
 		public static CoreManagerProvider Instance => _coreManagerProvider ??= new CoreManagerProvider();
 
-		private void Start() {
+		private void Awake() {
+				Instance.Register<TutorialController>(_tutorialController);
 				Instance.Register<MapManager>(_mapManager);
 				Instance.Register<MapGenerator>(_mapGenerator);
 				Instance.Register<ObjectsStorage>(_objectsStorage);

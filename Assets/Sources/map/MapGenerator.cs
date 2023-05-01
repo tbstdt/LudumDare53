@@ -10,6 +10,8 @@ namespace Sources.map {
 
 		private ObjectsStorage _objectStorage;
 
+		public Action<ObjectOnMap> OnObjectSpawned;
+
 		private void SetObject(out ObjectOnMap objectOnMap, ObjectType type, GameObject point)
 		{
 			objectOnMap = _objectStorage.GetObjectByType(type);
@@ -21,7 +23,10 @@ namespace Sources.map {
 		public void Init() {
 			_objectStorage = GameCore.Instance.Get<ObjectsStorage>();
 			foreach (var mapPoint in _points)
+			{
 				SetObject(out var objectOnMap, mapPoint.Type, mapPoint.Point);
+				OnObjectSpawned?.Invoke(objectOnMap);
+			}
 		}
 
 		public ObjectOnMap SpawnRandomObject(GameObject point)

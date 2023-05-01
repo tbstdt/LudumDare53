@@ -119,7 +119,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             _speedUpgrade = _upgradesData.SpeedUpgrades[_curSpeedUpgradeIndex].ValueChange;
             _curSpeedUpgradeIndex++;
         }
-       
+
         UpdateAllUpgradesView();
         UpdateResource();
     }
@@ -131,7 +131,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             _rpsUpgrade = _upgradesData.WeightUpgrades[_curWeightUpgradeIndex].ValueChange;
             _curWeightUpgradeIndex++;
         }
-       
+
         UpdateAllUpgradesView();
         UpdateResource();
     }
@@ -144,12 +144,19 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             _maxMenCount += (int)_upgradesData.MenUpgrades[_curMenUpgradeIndex].ValueChange;
             _curMenUpgradeIndex++;
         }
-      
+
         UpdateAllUpgradesView();
         UpdateResource();
     }
 
     #endregion
+
+    public void SetManCount(int amount)
+    {
+        m_availableMen += amount;
+        _maxMenCount += amount;
+        UpdateResource();
+    }
 
     public bool TryGetResourcePerSecond(ResourceType type, out float resourcePerSecond)
     {
@@ -210,7 +217,7 @@ public class Hub : ObjectOnMap, ICoreRegistrable {
             }
             _resourceBalloon.Show(man.Resources);
         }
-        
+
         UpdateResource();
         UpdateAllUpgradesView();
     }
