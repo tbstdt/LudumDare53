@@ -18,6 +18,6 @@ MonoBehaviour:
   TimeInSeconds: 70
   MoneyReward: 20
   ReputationReward: 1
-  ReputationPenalty: -2
+  ReputationPenalty: 10
   StartOrderRequirementDeliveryCount: 0
   EndOrderRequirementDeliveryCount: 0
