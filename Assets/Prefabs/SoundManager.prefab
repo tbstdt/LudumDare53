@@ -219,6 +219,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a339289296d19472e810d10f76ae0c58, type: 3}
   - Type: 4608
     clip: {fileID: 8300000, guid: 41409cbbe61f1423c9a652dbb2bda9cf, type: 3}
+  - Type: 8192
+    clip: {fileID: 8300000, guid: 022f3d00da9da481dbd429570dbd7649, type: 3}
 --- !u!1 &5813051042229908506
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +267,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

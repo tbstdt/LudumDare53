@@ -15,10 +15,41 @@ namespace Sources.Editor.UI {
 		[Space]
 		[SerializeField] private int _maxOrders = 50;
 		[SerializeField] private TextMeshProUGUI _orders;
+		[Space]
+		[SerializeField] private Animator m_animatorOne;
+		[SerializeField] private Animator m_animatorTwo;
+		[SerializeField] private Animator m_animatorThree;
+		[SerializeField] private Animator m_animatorMoney;
+		[SerializeField] private Animator m_animatorMan;
+
+		private readonly string m_triggerName = "showRed";
 
 		private void Start()
 		{
 			_orders.text = $"0/{_maxOrders}";
+		}
+
+		public void ShowRedMan()
+		{
+			m_animatorMan.SetTrigger(m_triggerName);
+		}
+
+		public void ShowRedResource(ResourceType type)
+		{
+			switch (type) {
+				case ResourceType.One:
+					m_animatorOne.SetTrigger(m_triggerName);
+					break;
+				case ResourceType.Two:
+					m_animatorTwo.SetTrigger(m_triggerName);
+					break;
+				case ResourceType.Three:
+					m_animatorThree.SetTrigger(m_triggerName);
+					break;
+				case ResourceType.Money:
+					m_animatorMoney.SetTrigger(m_triggerName);
+					break;
+			}
 		}
 
 		public void UpdateResource(Dictionary<ResourceType, int> resources, int workersCount, int workersMax) {

@@ -55,5 +55,7 @@ namespace Sources.Editor {
 		Neutral = 1 << 10,
 		Negative = 1 << 11,
 		Positive = 1 << 12,
+		
+		FX_Win = 1<< 13,
 	}
 }
