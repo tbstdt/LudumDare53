@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279cc41e8adf7bd4ba67b37f15553db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointForArrow: {fileID: 7361515210048796930}
+  PointForArrow: {fileID: 6129860231847573088}
   _resourceOne: {fileID: 5926732444175203194}
   _resourceTwo: {fileID: 1996981386591863773}
   _resourceThree: {fileID: 5683873674822583649}
@@ -896,6 +896,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6322395407665644510, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
   m_PrefabInstance: {fileID: 396970845876041892}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &6129860231847573088 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5806249905738600132, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
+  m_PrefabInstance: {fileID: 396970845876041892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6933972395272371274 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7329671917457261806, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
@@ -912,11 +917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &7361515210048796930 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7181844978932859302, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
-  m_PrefabInstance: {fileID: 396970845876041892}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9169425384837124989 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8845638320870009817, guid: b974ae073caa74147878a5a7be4465b8, type: 3}
