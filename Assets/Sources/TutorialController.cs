@@ -79,6 +79,7 @@ namespace Sources
                 pair.Key.ChangeAmount(pair.Value);
             m_customers.ForEach(c => c.StartFirstOrders());
             GameCore.Instance.Get<Hub>().SetManCount(m_manCountAfterTutorial);
+            GameCore.Instance.Get<RandomResourceGenerator>().StartSpawns();
 
             m_customerForOrder.OnOrderComplete = null;
             m_customerForOrder.OnManSend = null;
