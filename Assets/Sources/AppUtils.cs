@@ -1,21 +1,24 @@
 using Sources.core;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Sources.Editor {
-	public class AppUtils {
-		public static void Exit(){
-
+namespace Sources.Editor
+{
+    public class AppUtils
+    {
+        public static void Exit()
+        {
 #if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
-				Application.Quit();
-
+            Application.Quit();
 #endif
-		}
+        }
 
-		public static void Restart() {
-			GameCore.Instance.Dispode();
-			SceneManager.LoadScene(0, LoadSceneMode.Single);
-		}
-	}
+        public static void Restart()
+        {
+            GameCore.Instance.Dispode();
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        }
+    }
 }

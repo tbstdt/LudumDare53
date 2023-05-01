@@ -1,14 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Sources.core;
 using Sources.Editor;
 using Sources.Editor.ObjectsOnMap;
 using Sources.Editor.UI;
 using Sources.map;
 using TMPro;
-using UnityEditor.TextCore.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
