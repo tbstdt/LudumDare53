@@ -55,14 +55,12 @@ public class ResourcePlace : ObjectOnMap
 
     public override void OnPointerEnter(PointerEventData eventData) {
         foreach (var image in _graphic) {
-            image.color = Color.cyan;
             image.transform.localScale = new Vector3(_scaleOnPMouse, _scaleOnPMouse, _scaleOnPMouse);
         }
     }
 
     public override void OnPointerExit(PointerEventData eventData) {
         foreach (var image in _graphic) {
-            image.color = Color.white;
             image.transform.localScale = Vector3.one;
         }
     }
