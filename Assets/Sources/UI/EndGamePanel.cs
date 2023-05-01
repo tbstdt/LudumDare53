@@ -15,7 +15,7 @@ namespace Sources.Editor.UI {
 			gameObject.SetActive(true);
 			_endGameText.text = gameResult ? "Congratulations! You won!" : "Unfortunately you lost";
 			
-			GameCore.Instance.Get<SoundManager>().PlaySound(gameResult ? SoundType.FX_Positive : SoundType.FX_Fail);
+			GameCore.Instance.Get<SoundManager>().PlaySound(gameResult ? SoundType.FX_Win : SoundType.FX_Fail);
 		}
 
 		public void Init() {
